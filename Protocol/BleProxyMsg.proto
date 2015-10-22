@@ -1,0 +1,32 @@
+enum ProxyMsgCmd
+{
+    CONTROL = 1;
+    SCAN_RESULT = 2;
+}
+
+enum ControlCmd
+{
+    TURN_ON    = 0;
+    TURN_OFF   = 1;
+    START_SCAN = 2;
+    STOP_SCAN  = 3;
+}
+
+message Control
+{
+    required ControlCmd cmd = 1;
+}
+
+message ScanResult
+{
+    required string name = 1;
+    required string address = 2;
+    required int32 rssi = 3;
+}
+
+message BleProxyMsg
+{
+    required ProxyMsgCmd cmd = 1;
+    optional Control control = 2;
+    optional ScanResult scanResult = 3;
+}
