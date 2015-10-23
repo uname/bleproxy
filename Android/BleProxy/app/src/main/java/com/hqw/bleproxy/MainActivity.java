@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if(!BLEHelper.getInstance().btIsBluetoothOn()) {
+            BLEHelper.getInstance().btTurnOn(this,REQUEST_ENABLE_BT);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -51,5 +59,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_ENABLE_BT && resultCode == RESULT_CANCELED) {
+            finish();
+            return;
+        }
     }
 }

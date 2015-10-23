@@ -1,6 +1,7 @@
 package com.hqw.bleproxy.protocol;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.hqw.bleproxy.BLEHelper;
 import com.hqw.bleproxy.LogUtil;
 
 /**
@@ -47,8 +48,28 @@ public class ProtocolHandler {
         LogUtil.d(TAG, "onControl");
         switch (controlMsg.getCmd().getNumber()) {
             case BleProxy.ControlCmd.START_SCAN_VALUE:
-                LogUtil.d(TAG, "on scan msg");
+                onStartScan();
+                break;
+
+            case BleProxy.ControlCmd.STOP_SCAN_VALUE:
+                onStopScan();
                 break;
         }
+    }
+
+    private void onStartScan() {
+        LogUtil.d(TAG, "on start scan");
+        BLEHelper.getInstance().btStartScan();
+        BLEHelper.getInstance().setOnBleListener(new BLEHelper.OnBleListener() {
+            @Override
+            public void onScanResult(String deviceName, String address, int rssi) {
+                LogUtil.d(TAG, "deviceName: " + deviceName + ", address: " + address + ", rssi: " + rssi);
+            }
+        });
+    }
+
+    private void onStopScan() {
+        LogUtil.d(TAG, "on stop scan");
+        BLEHelper.getInstance().btStopScan();
     }
 }

@@ -2,6 +2,7 @@ package com.hqw.bleproxy.net;
 
 import com.hqw.bleproxy.LogUtil;
 import com.hqw.bleproxy.StringUtil;
+import com.hqw.bleproxy.BLEHelper;
 import com.hqw.bleproxy.protocol.ProtocolHandler;
 
 import java.io.IOException;
