@@ -25,13 +25,14 @@ public class BLEHelper {
 	private BLEBroadcastReceiver mGattReceiver;
 
 	private OnBleListener mListener;
+	private String mRecentAddress;
 
 	private boolean _isConnecting = false;  // 是否正在连接BLE设备
 //	private Map<String, Integer> _deviceInfo = new HashMap<String, Integer>();
 
 	public interface OnBleListener {
 		void onScanResult(String deviceName, String address, int rssi);
-		void onConnected();
+		void onConnectResult(boolean result);
 		void onDisconnected();
 		void onDataReceived(byte[] data);
 	}
@@ -46,7 +47,7 @@ public class BLEHelper {
 
 			switch (msg.what) {
 				case BLEBroadcastReceiver.MSG_GATT_SERVICES_DISCOVERED:
-					mListener.onConnected();
+					mListener.onConnectResult(BLEHelper.getInstance().realBtConnect((String) msg.obj));
 					break;
 
 				case BLEBroadcastReceiver.MSG_GATT_DISCONNECTED:
@@ -176,6 +177,7 @@ public class BLEHelper {
 		if("".equals(address)) {
 			return false;
 		}
+		mRecentAddress = address;
 		if(context == null) {
 			context = BleProxyApp.getContext();
 		}
@@ -199,6 +201,10 @@ public class BLEHelper {
 	 * @return
 	 */
 	public boolean btSend(String address, byte[] buff) {
+		if(address == null) {
+			address = mRecentAddress;
+		}
+		LogUtil.d(TAG, "send to<" + address + ">");
 		BLEClient client = BLEConnManager.getInstance().getLeClient(address);
 		if(client == null) {
 			LogUtil.d(TAG, "btSend error: client is null");
@@ -255,6 +261,7 @@ public class BLEHelper {
 	
 	public boolean realBtConnect(String address) {
 		_isConnecting = false;
+		LogUtil.d(TAG, "real connect <<<<" + address + ">>>>>");
 		return BLEConnManager.getInstance().initLeClient(address);
 	}
 	

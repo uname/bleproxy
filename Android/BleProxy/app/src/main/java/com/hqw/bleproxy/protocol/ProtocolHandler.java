@@ -22,8 +22,8 @@ public class ProtocolHandler {
         }
 
         @Override
-        public void onConnected() {
-            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(true, ""));
+        public void onConnectResult(boolean result) {
+            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(result, ""));
         }
 
         @Override
@@ -69,6 +69,10 @@ public class ProtocolHandler {
                 onConnect(bleProxyMsg.getConnect());
                 break;
 
+            case BleProxy.ProxyMsgCmd.SEND_VALUE:
+                onSend(bleProxyMsg.getSend());
+                break;
+
             default:
                 break;
         }
@@ -98,13 +102,19 @@ public class ProtocolHandler {
         BLEHelper.getInstance().btStopScan();
     }
 
-    private void onConnect(BleProxy.Connect connect) {
-        LogUtil.d(TAG, "on connect device: " + connect.getAddress());
-        if(!BLEHelper.getInstance().btConnect(null, connect.getAddress())) {
+    private void onConnect(BleProxy.Connect connectMsg) {
+        LogUtil.d(TAG, "on connect device: " + connectMsg.getAddress());
+        if(!BLEHelper.getInstance().btConnect(null, connectMsg.getAddress())) {
             mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(false, ""));
         } else {
             // attention: even btConnect return true, we are not sure weather it's connected
             // we need broadcast
         }
+    }
+
+    private void onSend(BleProxy.Send sendMsg) {
+        LogUtil.d(TAG, "on Send");
+        byte[] data = sendMsg.getData().toByteArray();
+        BLEHelper.getInstance().btSend(null, data);
     }
 }

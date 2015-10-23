@@ -50,10 +50,10 @@ public class BLEConnManager {
         boolean ret = _bleService.connect(address);
         if(ret) {
             _bleMap.put(address, new BLEConnHolder(_bleService));
-            LogUtil.d(TAG, "connect " + address + " success");
+            LogUtil.d(TAG, "connect<" + address + ">success");
         }
 
-        return true;
+        return true;//initLeClient(address);
     }
     
     /**
@@ -104,13 +104,14 @@ public class BLEConnManager {
             LogUtil.e(TAG, "address is null");
             return null;
         }
-
+        LogUtil.d(TAG, "keySet size: " + _bleMap.keySet().size());
         BLEConnHolder ci = _bleMap.get(address);
         if(ci == null) {
             LogUtil.e(TAG, "address not in map");
             return null;
         }
-        
+
+        LogUtil.d(TAG, "===============: " + ci.bleClient);
         return ci.bleClient;
     }
 
