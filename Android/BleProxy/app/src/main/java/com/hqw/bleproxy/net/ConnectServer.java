@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/10/22.
@@ -19,9 +21,10 @@ public class ConnectServer implements Runnable {
     private static ConnectServer mInstance ;
     private ServerSocket mServerSocket;
     private Thread mThread;
+    private List<ProxyServer> mProxyServerList;
 
     private ConnectServer() {
-
+        mProxyServerList = new ArrayList<>();
     }
 
     public synchronized static ConnectServer getInstance() {
@@ -70,6 +73,16 @@ public class ConnectServer implements Runnable {
         while(true) {
             try {
                 s = mServerSocket.accept();
+                ProxyServer proxyServer = new ProxyServer(s);
+                proxyServer.setOnProxyListener(new ProxyServer.OnProxyListener() {
+                    @Override
+                    public void clientDisconnected(ProxyServer proxyServer) {
+                        mProxyServerList.remove(proxyServer);
+                        LogUtil.d(TAG, "remove closed client");
+                    }
+                });
+                new Thread(proxyServer).start();
+                mProxyServerList.add(proxyServer);
                 LogUtil.i(TAG, "New client connected: " + s.hashCode());
             } catch (SocketTimeoutException e) {
                 continue;
