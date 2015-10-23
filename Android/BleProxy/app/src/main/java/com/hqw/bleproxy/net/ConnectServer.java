@@ -63,6 +63,19 @@ public class ConnectServer implements Runnable {
         return true;
     }
 
+    public void stopServer() {
+        try {
+            mServerSocket.close();
+            mServerSocket = null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(ProxyServer proxyServer: mProxyServerList) {
+            proxyServer.stop();
+        }
+    }
+
     @Override
     public void run() {
         if(mServerSocket == null) {
@@ -70,7 +83,7 @@ public class ConnectServer implements Runnable {
         }
 
         Socket s;
-        while(true) {
+        while(!mServerSocket.isClosed()) {
             try {
                 s = mServerSocket.accept();
                 ProxyServer proxyServer = new ProxyServer(s);
@@ -94,11 +107,7 @@ public class ConnectServer implements Runnable {
 
         }
 
-        try {
-            mServerSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        mThread = null;
         LogUtil.i(TAG, "thread stopped");
     }
 }

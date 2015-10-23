@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onStopServer(View v) {
+        ConnectServer.getInstance().stopServer();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

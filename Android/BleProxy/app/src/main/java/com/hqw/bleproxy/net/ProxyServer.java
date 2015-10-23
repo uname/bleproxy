@@ -51,12 +51,14 @@ public class ProxyServer implements Runnable {
                 n = mInputStream.read(buff, pos, len - pos);
             } catch (IOException e) {
                 e.printStackTrace();
+                return null;
             } finally {
                 if(n < 0) {
-                    LogUtil.e(TAG, "socket closed");
+                    LogUtil.d(TAG, "remote client closed");
                     return null;
                 }
             }
+
             pos += n;
         }
 
@@ -70,6 +72,14 @@ public class ProxyServer implements Runnable {
         }
         int msgLen = (lenBuff[0] & 0xff) | ((lenBuff[1] << 8) & 0xff00);
         return msgLen;
+    }
+
+    public void stop() {
+        try {
+            mClientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
