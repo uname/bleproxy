@@ -38,6 +38,10 @@ public class ProtocolHandler {
                 onControlMsg(bleProxyMsg.getControl());
                 break;
 
+            case BleProxy.ProxyMsgCmd.CONNECT_VALUE:
+                onConnect(bleProxyMsg.getConnect());
+                break;
+
             default:
                 break;
         }
@@ -71,5 +75,15 @@ public class ProtocolHandler {
     private void onStopScan() {
         LogUtil.d(TAG, "on stop scan");
         BLEHelper.getInstance().btStopScan();
+    }
+
+    private void onConnect(BleProxy.Connect connect) {
+        LogUtil.d(TAG, "on connect device: " + connect.getAddress());
+        if(!BLEHelper.getInstance().btConnect(null, connect.getAddress())) {
+            // TODO: tell the client, connect error
+        } else {
+            // attention: even btConnect return true, we are not sure weather it's connected
+            // we need broadcast
+        }
     }
 }

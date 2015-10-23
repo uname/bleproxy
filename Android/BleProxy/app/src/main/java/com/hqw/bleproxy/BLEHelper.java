@@ -115,11 +115,14 @@ public class BLEHelper {
 	 * @param address
 	 * 如果address为""，则连接到最近的设备
 	 */
-	public void btConnect(Context context, final String address) {
+	public boolean btConnect(Context context, final String address) {
 		if("".equals(address)) {
-			return;
+			return false;
 		}
-		btConnectToDevice(context, address);
+		if(context == null) {
+			context = BleProxyApp.getContext();
+		}
+		return btConnectToDevice(context, address);
 	}
 	
 	/**
@@ -180,14 +183,17 @@ public class BLEHelper {
 		return true;
 	}
 
-	private void btConnectToDevice(Context context, final String address) {
+	private boolean btConnectToDevice(Context context, final String address) {
 		LogUtil.d(TAG, "------------------------------------------------");
 		btStopScan();
-		if(!BLEConnManager.getInstance().connect(context, address)) {
+		boolean result = BLEConnManager.getInstance().connect(context, address);
+		if(!result) {
 			// nothing
 		} else {
 			_isConnecting = true;
 		}
+
+		return result;
 	}
 	
 	public boolean realBtConnect(String address) {

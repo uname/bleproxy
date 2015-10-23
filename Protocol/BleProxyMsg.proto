@@ -2,6 +2,9 @@ enum ProxyMsgCmd
 {
     CONTROL = 1;
     SCAN_RESULT = 2;
+    CONNECT = 3;
+    DISCONNECT = 4;
+    CONNECT_RESULT = 5;
 }
 
 enum ControlCmd
@@ -24,9 +27,28 @@ message ScanResult
     required int32 rssi = 3;
 }
 
+message Connect
+{
+    required string address = 1;
+}
+
+message Disconnect
+{
+    required string address = 1;
+}
+
+message ConnectResult
+{
+    required bool result = 1;
+    optional string errorString = 2;
+}
+
 message BleProxyMsg
 {
     required ProxyMsgCmd cmd = 1;
     optional Control control = 2;
     optional ScanResult scanResult = 3;
+    optional Connect connect = 4;
+    optional Disconnect disconnect = 5;
+    optional ConnectResult connectResult = 6;
 }
