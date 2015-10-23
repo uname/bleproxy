@@ -16,6 +16,7 @@ import java.net.Socket;
 public class ProxyServer implements Runnable {
 
     private static final String TAG = ProxyServer.class.getSimpleName();
+    private static final int HEAD_SIZE = 2;
     private Socket mClientSocket;
     private InputStream mInputStream;
     private OutputStream mOutputStream;
@@ -23,7 +24,7 @@ public class ProxyServer implements Runnable {
     private ProtocolHandler mProtocolHandler;
 
     public ProxyServer(Socket clientSocket) {
-        mProtocolHandler = new ProtocolHandler();
+        mProtocolHandler = new ProtocolHandler(this);
         mClientSocket = clientSocket;
         try {
             mInputStream = clientSocket.getInputStream();
@@ -65,8 +66,23 @@ public class ProxyServer implements Runnable {
         return buff;
     }
 
+    public synchronized boolean send(byte[] data) {
+        LogUtil.d(TAG, "send: " + StringUtil.bytesToHexString(data));
+        byte[] msgBuff = new byte[HEAD_SIZE + data.length];
+        msgBuff[0] = (byte) (data.length & 0x000000ff);
+        msgBuff[1] = (byte) ((data.length & 0x0000ff00) >>> 8);
+        System.arraycopy(data, 0, msgBuff, HEAD_SIZE, data.length);
+        try {
+            mOutputStream.write(msgBuff);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public int getMsgLen() {
-        byte[] lenBuff = receive(2);
+        byte[] lenBuff = receive(HEAD_SIZE);
         if(lenBuff == null) {
             return -1;
         }

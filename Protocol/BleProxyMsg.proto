@@ -5,6 +5,7 @@ enum ProxyMsgCmd
     CONNECT = 3;
     DISCONNECT = 4;
     CONNECT_RESULT = 5;
+    SEND = 6;
 }
 
 enum ControlCmd
@@ -43,6 +44,11 @@ message ConnectResult
     optional string errorString = 2;
 }
 
+message Send
+{
+    required bytes data = 1;
+}
+
 message BleProxyMsg
 {
     required ProxyMsgCmd cmd = 1;
@@ -51,4 +57,5 @@ message BleProxyMsg
     optional Connect connect = 4;
     optional Disconnect disconnect = 5;
     optional ConnectResult connectResult = 6;
+    optional Send send = 7;
 }

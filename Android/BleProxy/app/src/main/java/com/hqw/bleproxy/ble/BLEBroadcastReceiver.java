@@ -39,7 +39,7 @@ public class BLEBroadcastReceiver extends BroadcastReceiver {
             mHandler.obtainMessage(MSG_GATT_SERVICES_DISCOVERED, address).sendToTarget();
         }
         else if (BLEService.ACTION_DATA_AVAILABLE.equals(action)) {
-            mHandler.obtainMessage(MSG_DATA_AVAILABLE, intent).sendToTarget();
+            mHandler.obtainMessage(MSG_DATA_AVAILABLE, intent.getByteArrayExtra(BLEService.EXTRA_DATA)).sendToTarget();
         }
     }
 }

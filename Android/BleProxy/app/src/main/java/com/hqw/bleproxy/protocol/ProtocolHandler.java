@@ -1,8 +1,11 @@
 package com.hqw.bleproxy.protocol;
 
+import android.util.Log;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.hqw.bleproxy.BLEHelper;
 import com.hqw.bleproxy.LogUtil;
+import com.hqw.bleproxy.net.ProxyServer;
 
 /**
  * Created by Administrator on 2015/10/23.
@@ -11,8 +14,32 @@ public class ProtocolHandler {
 
     private static final String TAG = ProtocolHandler.class.getSimpleName();
 
-    public ProtocolHandler() {
+    private ProxyServer mProxyServer;
+    private BLEHelper.OnBleListener mListener = new BLEHelper.OnBleListener() {
+        @Override
+        public void onScanResult(String deviceName, String address, int rssi) {
+            LogUtil.d(TAG, "deviceName: " + deviceName + ", address: " + address + ", rssi: " + rssi);
+        }
 
+        @Override
+        public void onConnected() {
+            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(true, ""));
+        }
+
+        @Override
+        public void onDisconnected() {
+            //TODO: tell the client, disconnected
+        }
+
+        @Override
+        public void onDataReceived(byte[] data) {
+            //TODO: send data to client
+        }
+    };
+
+    public ProtocolHandler(ProxyServer proxyServer) {
+        BLEHelper.getInstance().setOnBleListener(mListener);
+        mProxyServer = proxyServer;
     }
 
     private BleProxy.BleProxyMsg parseMsg(byte[] msgBuff) {
@@ -64,12 +91,6 @@ public class ProtocolHandler {
     private void onStartScan() {
         LogUtil.d(TAG, "on start scan");
         BLEHelper.getInstance().btStartScan();
-        BLEHelper.getInstance().setOnBleListener(new BLEHelper.OnBleListener() {
-            @Override
-            public void onScanResult(String deviceName, String address, int rssi) {
-                LogUtil.d(TAG, "deviceName: " + deviceName + ", address: " + address + ", rssi: " + rssi);
-            }
-        });
     }
 
     private void onStopScan() {
@@ -80,7 +101,7 @@ public class ProtocolHandler {
     private void onConnect(BleProxy.Connect connect) {
         LogUtil.d(TAG, "on connect device: " + connect.getAddress());
         if(!BLEHelper.getInstance().btConnect(null, connect.getAddress())) {
-            // TODO: tell the client, connect error
+            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(false, ""));
         } else {
             // attention: even btConnect return true, we are not sure weather it's connected
             // we need broadcast

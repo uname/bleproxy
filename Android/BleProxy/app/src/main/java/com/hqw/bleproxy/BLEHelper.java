@@ -7,9 +7,14 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Message;
 
+import com.hqw.bleproxy.ble.BLEBroadcastReceiver;
 import com.hqw.bleproxy.ble.BLEClient;
 import com.hqw.bleproxy.ble.BLEConnManager;
+import com.hqw.bleproxy.ble.BLEService;
 
 public class BLEHelper {
 
@@ -17,6 +22,7 @@ public class BLEHelper {
 	private static BLEHelper mInstance;
 	private BluetoothManager _bluetoothManager;
 	private BluetoothAdapter _bluetoothAdapter;
+	private BLEBroadcastReceiver mGattReceiver;
 
 	private OnBleListener mListener;
 
@@ -25,7 +31,36 @@ public class BLEHelper {
 
 	public interface OnBleListener {
 		void onScanResult(String deviceName, String address, int rssi);
+		void onConnected();
+		void onDisconnected();
+		void onDataReceived(byte[] data);
 	}
+
+	private Handler mHandler = new Handler(new Handler.Callback() {
+		@Override
+		public boolean handleMessage(Message msg) {
+			if(mListener == null) {
+				LogUtil.e(TAG, "BLEHelper is listener is null");
+				return false;
+			}
+
+			switch (msg.what) {
+				case BLEBroadcastReceiver.MSG_GATT_SERVICES_DISCOVERED:
+					mListener.onConnected();
+					break;
+
+				case BLEBroadcastReceiver.MSG_GATT_DISCONNECTED:
+					mListener.onDisconnected();
+					break;
+
+				case BLEBroadcastReceiver.MSG_DATA_AVAILABLE:
+					mListener.onDataReceived((byte[]) msg.obj);
+					break;
+
+			}
+			return false;
+		}
+	});
 
 	protected BluetoothAdapter.LeScanCallback _leScanCallback =  new BluetoothAdapter.LeScanCallback() {
 		@Override
@@ -52,6 +87,7 @@ public class BLEHelper {
 		_bluetoothManager = (BluetoothManager) BleProxyApp.getContext().getSystemService(Context.BLUETOOTH_SERVICE);
 		assert _bluetoothManager != null;
 		_bluetoothAdapter = _bluetoothManager.getAdapter();
+		registerBleBroadcastReceiver();
 	}
 
 	public synchronized static BLEHelper getInstance() {
@@ -63,6 +99,27 @@ public class BLEHelper {
 
 	public void setOnBleListener(OnBleListener listener) {
 		mListener = listener;
+	}
+
+	public boolean registerBleBroadcastReceiver() {
+		if(mGattReceiver != null) {
+			LogUtil.e(TAG, "please unregister first");
+			return false;
+		}
+		final IntentFilter gattFilter = new IntentFilter();
+		gattFilter.addAction(BLEService.ACTION_GATT_CONNECTED);
+		gattFilter.addAction(BLEService.ACTION_GATT_DISCONNECTED);
+		gattFilter.addAction(BLEService.ACTION_GATT_SERVICES_DISCOVERED);
+		gattFilter.addAction(BLEService.ACTION_DATA_AVAILABLE);
+		mGattReceiver = new BLEBroadcastReceiver(mHandler);
+		BleProxyApp.getContext().registerReceiver(mGattReceiver, gattFilter);
+
+		return true;
+	}
+
+	public void unRegisterBleBroadcastReceiver() {
+		BleProxyApp.getContext().unregisterReceiver(mGattReceiver);
+		mGattReceiver = null;
 	}
 
 	/**
