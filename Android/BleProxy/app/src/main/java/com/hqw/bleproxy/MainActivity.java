@@ -1,8 +1,6 @@
 package com.hqw.bleproxy;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -70,5 +68,11 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BLEHelper.getInstance().unRegisterBleBroadcastReceiver();
     }
 }

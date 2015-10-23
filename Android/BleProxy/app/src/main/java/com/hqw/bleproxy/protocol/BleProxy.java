@@ -34,9 +34,9 @@ public final class BleProxy {
      */
     CONNECT_RESULT(4, 5),
     /**
-     * <code>SEND = 6;</code>
+     * <code>PROXY_DATA = 6;</code>
      */
-    SEND(5, 6),
+    PROXY_DATA(5, 6),
     ;
 
     /**
@@ -60,9 +60,9 @@ public final class BleProxy {
      */
     public static final int CONNECT_RESULT_VALUE = 5;
     /**
-     * <code>SEND = 6;</code>
+     * <code>PROXY_DATA = 6;</code>
      */
-    public static final int SEND_VALUE = 6;
+    public static final int PROXY_DATA_VALUE = 6;
 
 
     public final int getNumber() { return value; }
@@ -74,7 +74,7 @@ public final class BleProxy {
         case 3: return CONNECT;
         case 4: return DISCONNECT;
         case 5: return CONNECT_RESULT;
-        case 6: return SEND;
+        case 6: return PROXY_DATA;
         default: return null;
       }
     }
@@ -2889,7 +2889,7 @@ public final class BleProxy {
     // @@protoc_insertion_point(class_scope:com.hqw.bleproxy.protocol.ConnectResult)
   }
 
-  public interface SendOrBuilder
+  public interface ProxyDataOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required bytes data = 1;
@@ -2903,24 +2903,24 @@ public final class BleProxy {
     com.google.protobuf.ByteString getData();
   }
   /**
-   * Protobuf type {@code com.hqw.bleproxy.protocol.Send}
+   * Protobuf type {@code com.hqw.bleproxy.protocol.ProxyData}
    */
-  public static final class Send extends
+  public static final class ProxyData extends
       com.google.protobuf.GeneratedMessage
-      implements SendOrBuilder {
-    // Use Send.newBuilder() to construct.
-    private Send(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements ProxyDataOrBuilder {
+    // Use ProxyData.newBuilder() to construct.
+    private ProxyData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private Send(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private ProxyData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final Send defaultInstance;
-    public static Send getDefaultInstance() {
+    private static final ProxyData defaultInstance;
+    public static ProxyData getDefaultInstance() {
       return defaultInstance;
     }
 
-    public Send getDefaultInstanceForType() {
+    public ProxyData getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -2930,7 +2930,7 @@ public final class BleProxy {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Send(
+    private ProxyData(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2972,28 +2972,28 @@ public final class BleProxy {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Send_descriptor;
+      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_ProxyData_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Send_fieldAccessorTable
+      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_ProxyData_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hqw.bleproxy.protocol.BleProxy.Send.class, com.hqw.bleproxy.protocol.BleProxy.Send.Builder.class);
+              com.hqw.bleproxy.protocol.BleProxy.ProxyData.class, com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Send> PARSER =
-        new com.google.protobuf.AbstractParser<Send>() {
-      public Send parsePartialFrom(
+    public static com.google.protobuf.Parser<ProxyData> PARSER =
+        new com.google.protobuf.AbstractParser<ProxyData>() {
+      public ProxyData parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Send(input, extensionRegistry);
+        return new ProxyData(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Send> getParserForType() {
+    public com.google.protobuf.Parser<ProxyData> getParserForType() {
       return PARSER;
     }
 
@@ -3061,53 +3061,53 @@ public final class BleProxy {
       return super.writeReplace();
     }
 
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(byte[] data)
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(java.io.InputStream input)
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseDelimitedFrom(java.io.InputStream input)
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseDelimitedFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Send parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.ProxyData parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3116,7 +3116,7 @@ public final class BleProxy {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hqw.bleproxy.protocol.BleProxy.Send prototype) {
+    public static Builder newBuilder(com.hqw.bleproxy.protocol.BleProxy.ProxyData prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -3128,24 +3128,24 @@ public final class BleProxy {
       return builder;
     }
     /**
-     * Protobuf type {@code com.hqw.bleproxy.protocol.Send}
+     * Protobuf type {@code com.hqw.bleproxy.protocol.ProxyData}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hqw.bleproxy.protocol.BleProxy.SendOrBuilder {
+       implements com.hqw.bleproxy.protocol.BleProxy.ProxyDataOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Send_descriptor;
+        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_ProxyData_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Send_fieldAccessorTable
+        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_ProxyData_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hqw.bleproxy.protocol.BleProxy.Send.class, com.hqw.bleproxy.protocol.BleProxy.Send.Builder.class);
+                com.hqw.bleproxy.protocol.BleProxy.ProxyData.class, com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder.class);
       }
 
-      // Construct using com.hqw.bleproxy.protocol.BleProxy.Send.newBuilder()
+      // Construct using com.hqw.bleproxy.protocol.BleProxy.ProxyData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3176,23 +3176,23 @@ public final class BleProxy {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Send_descriptor;
+        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_ProxyData_descriptor;
       }
 
-      public com.hqw.bleproxy.protocol.BleProxy.Send getDefaultInstanceForType() {
-        return com.hqw.bleproxy.protocol.BleProxy.Send.getDefaultInstance();
+      public com.hqw.bleproxy.protocol.BleProxy.ProxyData getDefaultInstanceForType() {
+        return com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance();
       }
 
-      public com.hqw.bleproxy.protocol.BleProxy.Send build() {
-        com.hqw.bleproxy.protocol.BleProxy.Send result = buildPartial();
+      public com.hqw.bleproxy.protocol.BleProxy.ProxyData build() {
+        com.hqw.bleproxy.protocol.BleProxy.ProxyData result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hqw.bleproxy.protocol.BleProxy.Send buildPartial() {
-        com.hqw.bleproxy.protocol.BleProxy.Send result = new com.hqw.bleproxy.protocol.BleProxy.Send(this);
+      public com.hqw.bleproxy.protocol.BleProxy.ProxyData buildPartial() {
+        com.hqw.bleproxy.protocol.BleProxy.ProxyData result = new com.hqw.bleproxy.protocol.BleProxy.ProxyData(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3205,16 +3205,16 @@ public final class BleProxy {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hqw.bleproxy.protocol.BleProxy.Send) {
-          return mergeFrom((com.hqw.bleproxy.protocol.BleProxy.Send)other);
+        if (other instanceof com.hqw.bleproxy.protocol.BleProxy.ProxyData) {
+          return mergeFrom((com.hqw.bleproxy.protocol.BleProxy.ProxyData)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hqw.bleproxy.protocol.BleProxy.Send other) {
-        if (other == com.hqw.bleproxy.protocol.BleProxy.Send.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hqw.bleproxy.protocol.BleProxy.ProxyData other) {
+        if (other == com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance()) return this;
         if (other.hasData()) {
           setData(other.getData());
         }
@@ -3234,11 +3234,11 @@ public final class BleProxy {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hqw.bleproxy.protocol.BleProxy.Send parsedMessage = null;
+        com.hqw.bleproxy.protocol.BleProxy.ProxyData parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hqw.bleproxy.protocol.BleProxy.Send) e.getUnfinishedMessage();
+          parsedMessage = (com.hqw.bleproxy.protocol.BleProxy.ProxyData) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -3285,15 +3285,15 @@ public final class BleProxy {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.hqw.bleproxy.protocol.Send)
+      // @@protoc_insertion_point(builder_scope:com.hqw.bleproxy.protocol.ProxyData)
     }
 
     static {
-      defaultInstance = new Send(true);
+      defaultInstance = new ProxyData(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:com.hqw.bleproxy.protocol.Send)
+    // @@protoc_insertion_point(class_scope:com.hqw.bleproxy.protocol.ProxyData)
   }
 
   public interface BleProxyMsgOrBuilder
@@ -3379,19 +3379,19 @@ public final class BleProxy {
      */
     com.hqw.bleproxy.protocol.BleProxy.ConnectResultOrBuilder getConnectResultOrBuilder();
 
-    // optional .com.hqw.bleproxy.protocol.Send send = 7;
+    // optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
      */
-    boolean hasSend();
+    boolean hasProxyData();
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
      */
-    com.hqw.bleproxy.protocol.BleProxy.Send getSend();
+    com.hqw.bleproxy.protocol.BleProxy.ProxyData getProxyData();
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
      */
-    com.hqw.bleproxy.protocol.BleProxy.SendOrBuilder getSendOrBuilder();
+    com.hqw.bleproxy.protocol.BleProxy.ProxyDataOrBuilder getProxyDataOrBuilder();
   }
   /**
    * Protobuf type {@code com.hqw.bleproxy.protocol.BleProxyMsg}
@@ -3521,14 +3521,14 @@ public final class BleProxy {
               break;
             }
             case 58: {
-              com.hqw.bleproxy.protocol.BleProxy.Send.Builder subBuilder = null;
+              com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder subBuilder = null;
               if (((bitField0_ & 0x00000040) == 0x00000040)) {
-                subBuilder = send_.toBuilder();
+                subBuilder = proxyData_.toBuilder();
               }
-              send_ = input.readMessage(com.hqw.bleproxy.protocol.BleProxy.Send.PARSER, extensionRegistry);
+              proxyData_ = input.readMessage(com.hqw.bleproxy.protocol.BleProxy.ProxyData.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(send_);
-                send_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(proxyData_);
+                proxyData_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000040;
               break;
@@ -3699,26 +3699,26 @@ public final class BleProxy {
       return connectResult_;
     }
 
-    // optional .com.hqw.bleproxy.protocol.Send send = 7;
-    public static final int SEND_FIELD_NUMBER = 7;
-    private com.hqw.bleproxy.protocol.BleProxy.Send send_;
+    // optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;
+    public static final int PROXYDATA_FIELD_NUMBER = 7;
+    private com.hqw.bleproxy.protocol.BleProxy.ProxyData proxyData_;
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
      */
-    public boolean hasSend() {
+    public boolean hasProxyData() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
      */
-    public com.hqw.bleproxy.protocol.BleProxy.Send getSend() {
-      return send_;
+    public com.hqw.bleproxy.protocol.BleProxy.ProxyData getProxyData() {
+      return proxyData_;
     }
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
      */
-    public com.hqw.bleproxy.protocol.BleProxy.SendOrBuilder getSendOrBuilder() {
-      return send_;
+    public com.hqw.bleproxy.protocol.BleProxy.ProxyDataOrBuilder getProxyDataOrBuilder() {
+      return proxyData_;
     }
 
     private void initFields() {
@@ -3728,7 +3728,7 @@ public final class BleProxy {
       connect_ = com.hqw.bleproxy.protocol.BleProxy.Connect.getDefaultInstance();
       disconnect_ = com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance();
       connectResult_ = com.hqw.bleproxy.protocol.BleProxy.ConnectResult.getDefaultInstance();
-      send_ = com.hqw.bleproxy.protocol.BleProxy.Send.getDefaultInstance();
+      proxyData_ = com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3769,8 +3769,8 @@ public final class BleProxy {
           return false;
         }
       }
-      if (hasSend()) {
-        if (!getSend().isInitialized()) {
+      if (hasProxyData()) {
+        if (!getProxyData().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -3801,7 +3801,7 @@ public final class BleProxy {
         output.writeMessage(6, connectResult_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(7, send_);
+        output.writeMessage(7, proxyData_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3838,7 +3838,7 @@ public final class BleProxy {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, send_);
+          .computeMessageSize(7, proxyData_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3953,7 +3953,7 @@ public final class BleProxy {
           getConnectFieldBuilder();
           getDisconnectFieldBuilder();
           getConnectResultFieldBuilder();
-          getSendFieldBuilder();
+          getProxyDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3994,10 +3994,10 @@ public final class BleProxy {
           connectResultBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000020);
-        if (sendBuilder_ == null) {
-          send_ = com.hqw.bleproxy.protocol.BleProxy.Send.getDefaultInstance();
+        if (proxyDataBuilder_ == null) {
+          proxyData_ = com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance();
         } else {
-          sendBuilder_.clear();
+          proxyDataBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
@@ -4075,10 +4075,10 @@ public final class BleProxy {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        if (sendBuilder_ == null) {
-          result.send_ = send_;
+        if (proxyDataBuilder_ == null) {
+          result.proxyData_ = proxyData_;
         } else {
-          result.send_ = sendBuilder_.build();
+          result.proxyData_ = proxyDataBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -4114,8 +4114,8 @@ public final class BleProxy {
         if (other.hasConnectResult()) {
           mergeConnectResult(other.getConnectResult());
         }
-        if (other.hasSend()) {
-          mergeSend(other.getSend());
+        if (other.hasProxyData()) {
+          mergeProxyData(other.getProxyData());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4156,8 +4156,8 @@ public final class BleProxy {
             return false;
           }
         }
-        if (hasSend()) {
-          if (!getSend().isInitialized()) {
+        if (hasProxyData()) {
+          if (!getProxyData().isInitialized()) {
             
             return false;
           }
@@ -4805,121 +4805,121 @@ public final class BleProxy {
         return connectResultBuilder_;
       }
 
-      // optional .com.hqw.bleproxy.protocol.Send send = 7;
-      private com.hqw.bleproxy.protocol.BleProxy.Send send_ = com.hqw.bleproxy.protocol.BleProxy.Send.getDefaultInstance();
+      // optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;
+      private com.hqw.bleproxy.protocol.BleProxy.ProxyData proxyData_ = com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.hqw.bleproxy.protocol.BleProxy.Send, com.hqw.bleproxy.protocol.BleProxy.Send.Builder, com.hqw.bleproxy.protocol.BleProxy.SendOrBuilder> sendBuilder_;
+          com.hqw.bleproxy.protocol.BleProxy.ProxyData, com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder, com.hqw.bleproxy.protocol.BleProxy.ProxyDataOrBuilder> proxyDataBuilder_;
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public boolean hasSend() {
+      public boolean hasProxyData() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public com.hqw.bleproxy.protocol.BleProxy.Send getSend() {
-        if (sendBuilder_ == null) {
-          return send_;
+      public com.hqw.bleproxy.protocol.BleProxy.ProxyData getProxyData() {
+        if (proxyDataBuilder_ == null) {
+          return proxyData_;
         } else {
-          return sendBuilder_.getMessage();
+          return proxyDataBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public Builder setSend(com.hqw.bleproxy.protocol.BleProxy.Send value) {
-        if (sendBuilder_ == null) {
+      public Builder setProxyData(com.hqw.bleproxy.protocol.BleProxy.ProxyData value) {
+        if (proxyDataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          send_ = value;
+          proxyData_ = value;
           onChanged();
         } else {
-          sendBuilder_.setMessage(value);
+          proxyDataBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000040;
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public Builder setSend(
-          com.hqw.bleproxy.protocol.BleProxy.Send.Builder builderForValue) {
-        if (sendBuilder_ == null) {
-          send_ = builderForValue.build();
+      public Builder setProxyData(
+          com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder builderForValue) {
+        if (proxyDataBuilder_ == null) {
+          proxyData_ = builderForValue.build();
           onChanged();
         } else {
-          sendBuilder_.setMessage(builderForValue.build());
+          proxyDataBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000040;
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public Builder mergeSend(com.hqw.bleproxy.protocol.BleProxy.Send value) {
-        if (sendBuilder_ == null) {
+      public Builder mergeProxyData(com.hqw.bleproxy.protocol.BleProxy.ProxyData value) {
+        if (proxyDataBuilder_ == null) {
           if (((bitField0_ & 0x00000040) == 0x00000040) &&
-              send_ != com.hqw.bleproxy.protocol.BleProxy.Send.getDefaultInstance()) {
-            send_ =
-              com.hqw.bleproxy.protocol.BleProxy.Send.newBuilder(send_).mergeFrom(value).buildPartial();
+              proxyData_ != com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance()) {
+            proxyData_ =
+              com.hqw.bleproxy.protocol.BleProxy.ProxyData.newBuilder(proxyData_).mergeFrom(value).buildPartial();
           } else {
-            send_ = value;
+            proxyData_ = value;
           }
           onChanged();
         } else {
-          sendBuilder_.mergeFrom(value);
+          proxyDataBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000040;
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public Builder clearSend() {
-        if (sendBuilder_ == null) {
-          send_ = com.hqw.bleproxy.protocol.BleProxy.Send.getDefaultInstance();
+      public Builder clearProxyData() {
+        if (proxyDataBuilder_ == null) {
+          proxyData_ = com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance();
           onChanged();
         } else {
-          sendBuilder_.clear();
+          proxyDataBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public com.hqw.bleproxy.protocol.BleProxy.Send.Builder getSendBuilder() {
+      public com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder getProxyDataBuilder() {
         bitField0_ |= 0x00000040;
         onChanged();
-        return getSendFieldBuilder().getBuilder();
+        return getProxyDataFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
-      public com.hqw.bleproxy.protocol.BleProxy.SendOrBuilder getSendOrBuilder() {
-        if (sendBuilder_ != null) {
-          return sendBuilder_.getMessageOrBuilder();
+      public com.hqw.bleproxy.protocol.BleProxy.ProxyDataOrBuilder getProxyDataOrBuilder() {
+        if (proxyDataBuilder_ != null) {
+          return proxyDataBuilder_.getMessageOrBuilder();
         } else {
-          return send_;
+          return proxyData_;
         }
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Send send = 7;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.ProxyData proxyData = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.hqw.bleproxy.protocol.BleProxy.Send, com.hqw.bleproxy.protocol.BleProxy.Send.Builder, com.hqw.bleproxy.protocol.BleProxy.SendOrBuilder> 
-          getSendFieldBuilder() {
-        if (sendBuilder_ == null) {
-          sendBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.hqw.bleproxy.protocol.BleProxy.Send, com.hqw.bleproxy.protocol.BleProxy.Send.Builder, com.hqw.bleproxy.protocol.BleProxy.SendOrBuilder>(
-                  send_,
+          com.hqw.bleproxy.protocol.BleProxy.ProxyData, com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder, com.hqw.bleproxy.protocol.BleProxy.ProxyDataOrBuilder> 
+          getProxyDataFieldBuilder() {
+        if (proxyDataBuilder_ == null) {
+          proxyDataBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hqw.bleproxy.protocol.BleProxy.ProxyData, com.hqw.bleproxy.protocol.BleProxy.ProxyData.Builder, com.hqw.bleproxy.protocol.BleProxy.ProxyDataOrBuilder>(
+                  proxyData_,
                   getParentForChildren(),
                   isClean());
-          send_ = null;
+          proxyData_ = null;
         }
-        return sendBuilder_;
+        return proxyDataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.hqw.bleproxy.protocol.BleProxyMsg)
@@ -4959,10 +4959,10 @@ public final class BleProxy {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_hqw_bleproxy_protocol_ConnectResult_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hqw_bleproxy_protocol_Send_descriptor;
+    internal_static_com_hqw_bleproxy_protocol_ProxyData_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_hqw_bleproxy_protocol_Send_fieldAccessorTable;
+      internal_static_com_hqw_bleproxy_protocol_ProxyData_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_hqw_bleproxy_protocol_BleProxyMsg_descriptor;
   private static
@@ -4984,23 +4984,23 @@ public final class BleProxy {
       "\014\n\004rssi\030\003 \002(\005\"\032\n\007Connect\022\017\n\007address\030\001 \002(" +
       "\t\"\035\n\nDisconnect\022\017\n\007address\030\001 \002(\t\"4\n\rConn" +
       "ectResult\022\016\n\006result\030\001 \002(\010\022\023\n\013errorString" +
-      "\030\002 \001(\t\"\024\n\004Send\022\014\n\004data\030\001 \002(\014\"\222\003\n\013BleProx" +
-      "yMsg\0223\n\003cmd\030\001 \002(\0162&.com.hqw.bleproxy.pro" +
-      "tocol.ProxyMsgCmd\0223\n\007control\030\002 \001(\0132\".com",
-      ".hqw.bleproxy.protocol.Control\0229\n\nscanRe" +
-      "sult\030\003 \001(\0132%.com.hqw.bleproxy.protocol.S" +
-      "canResult\0223\n\007connect\030\004 \001(\0132\".com.hqw.ble" +
-      "proxy.protocol.Connect\0229\n\ndisconnect\030\005 \001" +
-      "(\0132%.com.hqw.bleproxy.protocol.Disconnec" +
-      "t\022?\n\rconnectResult\030\006 \001(\0132(.com.hqw.blepr" +
-      "oxy.protocol.ConnectResult\022-\n\004send\030\007 \001(\013" +
-      "2\037.com.hqw.bleproxy.protocol.Send*f\n\013Pro" +
-      "xyMsgCmd\022\013\n\007CONTROL\020\001\022\017\n\013SCAN_RESULT\020\002\022\013" +
-      "\n\007CONNECT\020\003\022\016\n\nDISCONNECT\020\004\022\022\n\016CONNECT_R",
-      "ESULT\020\005\022\010\n\004SEND\020\006*F\n\nControlCmd\022\013\n\007TURN_" +
-      "ON\020\000\022\014\n\010TURN_OFF\020\001\022\016\n\nSTART_SCAN\020\002\022\r\n\tST" +
-      "OP_SCAN\020\003B%\n\031com.hqw.bleproxy.protocolB\010" +
-      "BleProxy"
+      "\030\002 \001(\t\"\031\n\tProxyData\022\014\n\004data\030\001 \002(\014\"\234\003\n\013Bl" +
+      "eProxyMsg\0223\n\003cmd\030\001 \002(\0162&.com.hqw.bleprox" +
+      "y.protocol.ProxyMsgCmd\0223\n\007control\030\002 \001(\0132",
+      "\".com.hqw.bleproxy.protocol.Control\0229\n\ns" +
+      "canResult\030\003 \001(\0132%.com.hqw.bleproxy.proto" +
+      "col.ScanResult\0223\n\007connect\030\004 \001(\0132\".com.hq" +
+      "w.bleproxy.protocol.Connect\0229\n\ndisconnec" +
+      "t\030\005 \001(\0132%.com.hqw.bleproxy.protocol.Disc" +
+      "onnect\022?\n\rconnectResult\030\006 \001(\0132(.com.hqw." +
+      "bleproxy.protocol.ConnectResult\0227\n\tproxy" +
+      "Data\030\007 \001(\0132$.com.hqw.bleproxy.protocol.P" +
+      "roxyData*l\n\013ProxyMsgCmd\022\013\n\007CONTROL\020\001\022\017\n\013" +
+      "SCAN_RESULT\020\002\022\013\n\007CONNECT\020\003\022\016\n\nDISCONNECT",
+      "\020\004\022\022\n\016CONNECT_RESULT\020\005\022\016\n\nPROXY_DATA\020\006*F" +
+      "\n\nControlCmd\022\013\n\007TURN_ON\020\000\022\014\n\010TURN_OFF\020\001\022" +
+      "\016\n\nSTART_SCAN\020\002\022\r\n\tSTOP_SCAN\020\003B%\n\031com.hq" +
+      "w.bleproxy.protocolB\010BleProxy"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5037,18 +5037,18 @@ public final class BleProxy {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_hqw_bleproxy_protocol_ConnectResult_descriptor,
               new java.lang.String[] { "Result", "ErrorString", });
-          internal_static_com_hqw_bleproxy_protocol_Send_descriptor =
+          internal_static_com_hqw_bleproxy_protocol_ProxyData_descriptor =
             getDescriptor().getMessageTypes().get(5);
-          internal_static_com_hqw_bleproxy_protocol_Send_fieldAccessorTable = new
+          internal_static_com_hqw_bleproxy_protocol_ProxyData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_hqw_bleproxy_protocol_Send_descriptor,
+              internal_static_com_hqw_bleproxy_protocol_ProxyData_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_hqw_bleproxy_protocol_BleProxyMsg_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_com_hqw_bleproxy_protocol_BleProxyMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_hqw_bleproxy_protocol_BleProxyMsg_descriptor,
-              new java.lang.String[] { "Cmd", "Control", "ScanResult", "Connect", "Disconnect", "ConnectResult", "Send", });
+              new java.lang.String[] { "Cmd", "Control", "ScanResult", "Connect", "Disconnect", "ConnectResult", "ProxyData", });
           return null;
         }
       };

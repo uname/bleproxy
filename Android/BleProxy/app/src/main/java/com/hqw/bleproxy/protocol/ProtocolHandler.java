@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.hqw.bleproxy.BLEHelper;
 import com.hqw.bleproxy.LogUtil;
+import com.hqw.bleproxy.StringUtil;
 import com.hqw.bleproxy.net.ProxyServer;
 
 /**
@@ -34,6 +35,8 @@ public class ProtocolHandler {
         @Override
         public void onDataReceived(byte[] data) {
             //TODO: send data to client
+            LogUtil.d(TAG, "recv: " + StringUtil.bytesToHexString(data));
+            sendToClient(data);
         }
     };
 
@@ -69,8 +72,8 @@ public class ProtocolHandler {
                 onConnect(bleProxyMsg.getConnect());
                 break;
 
-            case BleProxy.ProxyMsgCmd.SEND_VALUE:
-                onSend(bleProxyMsg.getSend());
+            case BleProxy.ProxyMsgCmd.PROXY_DATA_VALUE:
+                onSend(bleProxyMsg.getProxyData());
                 break;
 
             default:
@@ -112,9 +115,13 @@ public class ProtocolHandler {
         }
     }
 
-    private void onSend(BleProxy.Send sendMsg) {
+    private void onSend(BleProxy.ProxyData proxyData) {
         LogUtil.d(TAG, "on Send");
-        byte[] data = sendMsg.getData().toByteArray();
+        byte[] data = proxyData.getData().toByteArray();
         BLEHelper.getInstance().btSend(null, data);
+    }
+
+    private void sendToClient(byte[] data) {
+        mProxyServer.send(ProtocolPacker.getInstance().getProxyDataMsgBuff(data));
     }
 }

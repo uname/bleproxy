@@ -220,32 +220,6 @@ public class BLEHelper {
 		return ret;
 	}
 
-	/**
-	 *
-	 * @param address
-	 * @param buff
-	 * @param n
-	 * @return
-	 */
-	public boolean btNSend(final String address, final byte[] buff, final int n) {
-		if(n < 1) {
-			return false;
-		}
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				btSend(address, buff);
-				try {
-					Thread.sleep(30);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}).start();
-
-		return true;
-	}
-
 	private boolean btConnectToDevice(Context context, final String address) {
 		LogUtil.d(TAG, "------------------------------------------------");
 		btStopScan();
@@ -263,17 +237,6 @@ public class BLEHelper {
 		_isConnecting = false;
 		LogUtil.d(TAG, "real connect <<<<" + address + ">>>>>");
 		return BLEConnManager.getInstance().initLeClient(address);
-	}
-	
-	public void dispatchBuff(String address, byte[] buff) {
-    	LogUtil.d(TAG, "DATA From " + address + " --> " + StringUtil.bytesToHexString(buff));
-    	BLEClient client = BLEConnManager.getInstance().getLeClient(address);
-    	if(client == null) {
-    		LogUtil.e(TAG, "BLEClient on " + address + " is null");
-    		return;
-    	}
-    	client.handleReceivedBuff(buff);
-    	LogUtil.d(TAG,  "BLEClient proc the data...");
 	}
 
 	public int getConnBLECount() {

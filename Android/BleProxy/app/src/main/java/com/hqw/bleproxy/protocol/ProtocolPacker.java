@@ -1,5 +1,7 @@
 package com.hqw.bleproxy.protocol;
 
+import com.google.protobuf.ByteString;
+
 /**
  * Created by Administrator on 2015/10/23.
  */
@@ -24,5 +26,11 @@ public class ProtocolPacker {
         return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.CONNECT_RESULT)
                 .setConnectResult(BleProxy.ConnectResult.newBuilder().setResult(result)
                     .setErrorString(errorString)).build().toByteArray();
+    }
+
+    public byte[] getProxyDataMsgBuff(byte[] data) {
+        mMsgBuilder.clear();
+        return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.PROXY_DATA)
+                .setProxyData(BleProxy.ProxyData.newBuilder().setData(ByteString.copyFrom(data))).build().toByteArray();
     }
 }

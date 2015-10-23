@@ -20,32 +20,17 @@ public class BLEClient {
     private static final int MAX_SEND_INTERVAL = BLEConfig.MAX_SEND_INTERVAL;// 最大的数据发送间隔(ms)
     private static final int MAX_SEND_BUFF_SIZE = BLEConfig.MAX_SEND_BUFF_SIZE; // 一次发送的数据的最大长度(超过该长度后需要拆包发送)
 
-    private String mAddress;
     private BLEService mBLEService;
     private BluetoothGattCharacteristic mReceiveCharacteristic;
     private BluetoothGattCharacteristic mSendCharacteristic;
-    
-    //private BLEPacketReceiver mPacketReceiver;
+
 
     private boolean mIsInit;
     private long mLastSentTime ;
 
-//    private BLEPacketReceiver.BLEPacketReceivedListener mBLEPacketListener
-//            = new BLEPacketReceiver.BLEPacketReceivedListener() {
-//        @Override
-//        public void onBLEPacketReceived(BLEPacket BLEPacket) {
-//            LogUtil.d(TAG, "BLE Packet received");
-//        }
-//        @Override
-//		public void onReceiverStopped() {
-//			LogUtil.w(TAG, "Received stopped");
-//		}
-//    };
     
     public BLEClient(String address, BLEService bleService) {
-    	mAddress = address;
         mBLEService = bleService;
-//        mPacketReceiver = new BLEPacketReceiver(mBLEPacketListener);
     }
 
     public boolean init() {
@@ -71,8 +56,6 @@ public class BLEClient {
             LogUtil.e(TAG, "send gattCharacteristic is null");
             return false;
         }
-        
-//        mPacketReceiver.start();
         
         mIsInit = true;
 
@@ -119,17 +102,9 @@ public class BLEClient {
         return buff.length;
     }
 
-    /**
-     * 处理收到的数据
-     * @param buff
-     */
-    public void handleReceivedBuff(byte[] buff) {
-//    	mPacketReceiver.offer(buff);
-    }
     
     public void close() {
     	mBLEService.disconnect();
         mBLEService.close();
-//        mPacketReceiver.stop();
     }
 }
