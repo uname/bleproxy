@@ -86,11 +86,13 @@ public class ConnectServer implements Runnable {
     }
 
     public void stopServer() {
-        try {
-            mServerSocket.close();
+        if(mServerSocket != null) {
+            try {
+                mServerSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             mServerSocket = null;
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         for(ProxyServer proxyServer: mProxyServerList) {

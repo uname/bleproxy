@@ -5,11 +5,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hqw.bleproxy.net.ConnectServer;
 
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mServerStatus;
     private TextView mServerAddress;
     private TextView mServerLog;
+
+    private boolean mExitFlag = false;
 
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
@@ -127,10 +131,33 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode != KeyEvent.KEYCODE_BACK) {
+            return false;
+        }
+
+        if(mExitFlag) {
+            finish();
+            return false;
+        }
+        Toast.makeText(this, R.string.exit_tip, Toast.LENGTH_SHORT).show();
+        mExitFlag = true;
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mExitFlag = false;
+            }
+        }, 3000);
+
+        return false;
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        LogUtil.d(TAG, "onDestroy");
         BLEHelper.getInstance().unRegisterBleBroadcastReceiver();
+        ConnectServer.getInstance().stopServer();
     }
 }

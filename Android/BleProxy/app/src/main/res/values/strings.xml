@@ -7,4 +7,5 @@
     <string name="stop_server">停止服务器</string>
     <string name="status_stopped">已停止</string>
     <string name="status_started">已启动</string>
+    <string name="exit_tip">再次单击退出</string>
 </resources>
