@@ -119,8 +119,10 @@ public class BLEHelper {
 	}
 
 	public void unRegisterBleBroadcastReceiver() {
-		BleProxyApp.getContext().unregisterReceiver(mGattReceiver);
-		mGattReceiver = null;
+		if(mGattReceiver != null) {
+			BleProxyApp.getContext().unregisterReceiver(mGattReceiver);
+			mGattReceiver = null;
+		}
 	}
 
 	/**
