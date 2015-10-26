@@ -93,6 +93,7 @@ public class ProxyServer implements Runnable {
     public void stop() {
         try {
             mClientSocket.close();
+            // TODO: disconnect ble
         } catch (IOException e) {
             e.printStackTrace();
         }

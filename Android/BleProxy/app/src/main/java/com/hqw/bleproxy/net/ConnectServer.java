@@ -5,6 +5,7 @@ import com.hqw.bleproxy.LogUtil;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,6 @@ import java.util.List;
 public class ConnectServer implements Runnable {
 
     private static final String TAG = ConnectServer.class.getSimpleName();
-    private static int SERVER_PORT = 8098;
     private static int TIMEOUT = 100;
 
     private static ConnectServer mInstance ;
@@ -36,16 +36,25 @@ public class ConnectServer implements Runnable {
 
     public boolean initServer() {
         try {
-            mServerSocket = new ServerSocket(SERVER_PORT, 1);
+            mServerSocket = new ServerSocket(NetConfig.getServerPort(), 1);
             mServerSocket.setReuseAddress(true);
             mServerSocket.setSoTimeout(TIMEOUT);
-            LogUtil.i(TAG, "init server ok -> " + mServerSocket.getLocalSocketAddress().toString() + ":" + SERVER_PORT);
+            LogUtil.i(TAG, "init server ok -> " + mServerSocket.getLocalSocketAddress().toString() + ":" + NetConfig.getServerPort());
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
 
         return true;
+    }
+
+    public String getBindAddress() {
+        try {
+            return NetUtil.getLocalIpAddress() + ":" + NetConfig.getServerPort();
+        } catch (SocketException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     public boolean startServer() {
@@ -61,6 +70,10 @@ public class ConnectServer implements Runnable {
         mThread.start();
 
         return true;
+    }
+
+    public boolean isRunning() {
+        return mThread != null && mThread.isAlive();
     }
 
     public void stopServer() {
