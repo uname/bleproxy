@@ -1,6 +1,8 @@
 package com.hqw.bleproxy;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,10 +25,30 @@ public class MainActivity extends AppCompatActivity {
     private TextView mServerAddress;
     private TextView mServerLog;
 
+    private Handler mHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what) {
+                case ConnectServer.MSG_CLIENT_CONNECTED:
+                    addLog("connected: " + msg.obj);
+                    break;
+
+                case ConnectServer.MSG_CLIENT_DISCONNECTED:
+                    addLog("disconnected: " + msg.obj);
+                    break;
+
+                default:
+                    break;
+            }
+            return false;
+        }
+    });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ConnectServer.getInstance().setHandler(mHandler);
 
         initView();
     }
@@ -64,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
     private void setUiOnStarted() {
         mServerSwitch.setText(R.string.stop_server);
         mServerStatus.setText(R.string.status_started);
+        mServerLog.setText("");
+    }
+
+    private void addLog(String msg) {
+        mServerLog.append(msg + "\n");
     }
 
     public void onServerSwitchClicked(View v) {
