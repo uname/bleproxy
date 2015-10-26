@@ -91,6 +91,7 @@ public class ProxyServer implements Runnable {
     }
 
     public void stop() {
+        BLEHelper.getInstance().btDisconnect("");
         try {
             mClientSocket.close();
             // TODO: disconnect ble

@@ -189,7 +189,10 @@ public class BLEHelper {
 	 * @param address
 	 * 如果address为""，则断开所有已连接的设备
 	 */
-	public void btDisconnect(final String address) {
+	public void btDisconnect(String address) {
+		if(address == null) {
+			address = mRecentAddress;
+		}
 		BLEConnManager.getInstance().disconnect(address);
 	}
 

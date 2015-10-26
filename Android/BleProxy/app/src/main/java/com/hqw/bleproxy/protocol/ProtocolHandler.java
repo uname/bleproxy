@@ -34,8 +34,7 @@ public class ProtocolHandler {
 
         @Override
         public void onDataReceived(byte[] data) {
-            //TODO: send data to client
-            LogUtil.d(TAG, "recv: " + StringUtil.bytesToHexString(data));
+            LogUtil.d(TAG, "received: " + StringUtil.bytesToHexString(data));
             sendToClient(data);
         }
     };

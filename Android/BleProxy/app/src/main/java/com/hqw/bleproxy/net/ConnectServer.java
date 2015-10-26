@@ -117,6 +117,7 @@ public class ConnectServer implements Runnable {
                     @Override
                     public void clientDisconnected(ProxyServer proxyServer) {
                         mProxyServerList.remove(proxyServer);
+                        proxyServer.stop();
                         mHandler.obtainMessage(MSG_CLIENT_DISCONNECTED,remoteAddress).sendToTarget();
                         LogUtil.d(TAG, "remove closed client");
                     }
