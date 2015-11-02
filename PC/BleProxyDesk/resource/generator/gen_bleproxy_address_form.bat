@@ -1,0 +1,1 @@
+pyuic4 ../ui/bleproxy_address_form.ui > ../../ui/Ui_BleProxyAddressForm.py

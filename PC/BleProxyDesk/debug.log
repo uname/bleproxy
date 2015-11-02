@@ -1,0 +1,43 @@
+[ERROR  ][02 Nov 2015 19:50:52][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 19:50:52][MainWindow.py:30] connect error
+[ERROR  ][02 Nov 2015 19:53:40][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 19:53:40][MainWindow.py:32] connect error
+[ERROR  ][02 Nov 2015 19:54:06][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 19:54:06][MainWindow.py:33] connect error
+[ERROR  ][02 Nov 2015 19:54:27][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 19:54:27][MainWindow.py:33] connect error
+[ERROR  ][02 Nov 2015 19:56:19][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 19:56:19][MainWindow.py:33] connect error
+[ERROR  ][02 Nov 2015 19:56:24][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 19:56:24][MainWindow.py:33] connect error
+[ERROR  ][02 Nov 2015 19:56:31][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 19:56:31][MainWindow.py:33] connect error
+[DEBUG  ][02 Nov 2015 19:58:20][MainWindow.py:32] connect success
+[DEBUG  ][02 Nov 2015 19:58:53][MainWindow.py:32] connect success
+[ERROR  ][02 Nov 2015 20:03:29][MainWindow.py:34] connect error
+[ERROR  ][02 Nov 2015 20:03:32][TcpClient.py:32] connect exp: 
+[ERROR  ][02 Nov 2015 20:03:32][MainWindow.py:34] connect error
+[ERROR  ][02 Nov 2015 20:03:58][MainWindow.py:34] connect error
+[DEBUG  ][02 Nov 2015 20:04:00][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:04:00][TcpClient.py:71] tcp client stopped
+[ERROR  ][02 Nov 2015 20:04:15][MainWindow.py:34] connect error
+[DEBUG  ][02 Nov 2015 20:04:20][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:04:20][TcpClient.py:71] tcp client stopped
+[DEBUG  ][02 Nov 2015 20:05:09][MainWindow.py:32] connect success
+[DEBUG  ][02 Nov 2015 20:05:22][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:05:22][TcpClient.py:71] tcp client stopped
+[DEBUG  ][02 Nov 2015 20:06:59][MainWindow.py:36] connect success
+[DEBUG  ][02 Nov 2015 20:07:00][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:07:00][TcpClient.py:71] tcp client stopped
+[DEBUG  ][02 Nov 2015 20:07:14][MainWindow.py:37] connect success
+[DEBUG  ][02 Nov 2015 20:07:20][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:07:20][TcpClient.py:71] tcp client stopped
+[DEBUG  ][02 Nov 2015 20:08:34][MainWindow.py:41] connect success
+[DEBUG  ][02 Nov 2015 20:08:44][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:08:44][TcpClient.py:71] tcp client stopped
+[DEBUG  ][02 Nov 2015 20:09:56][MainWindow.py:41] connect success
+[DEBUG  ][02 Nov 2015 20:10:02][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:10:02][TcpClient.py:71] tcp client stopped
+[DEBUG  ][02 Nov 2015 20:10:26][MainWindow.py:41] connect success
+[DEBUG  ][02 Nov 2015 20:14:01][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 20:14:01][TcpClient.py:71] tcp client stopped

@@ -15,7 +15,8 @@ import Queue
 BLEPROXY_IP = "10.66.236.189"
 BLEPROXY_PORT = 8927
 #BLE_ADDRESS = "74:DA:EA:AE:9A:33" # FOR TEST
-BLE_ADDRESS = "D0:5F:B8:2A:F6:E6"
+#BLE_ADDRESS = "D0:5F:B8:2A:F6:E6"
+BLE_ADDRESS = "B4:99:4C:39:9C:82"
 #BLE_ADDRESS = "74:DA:EA:B1:09:7A"
 INTERVAL = 0.2 # S
 ###################################################
