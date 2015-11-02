@@ -14,7 +14,7 @@ class MainWindowPresenter:
         if ret:
             self.tcpClient.start()
             
-        return True
+        return ret
     
     def stopTcpClient(self):
         if self.tcpClient:

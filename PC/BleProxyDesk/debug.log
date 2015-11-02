@@ -41,3 +41,14 @@
 [DEBUG  ][02 Nov 2015 20:10:26][MainWindow.py:41] connect success
 [DEBUG  ][02 Nov 2015 20:14:01][TcpClient.py:42] ------ CLOSE ------
 [DEBUG  ][02 Nov 2015 20:14:01][TcpClient.py:71] tcp client stopped
+[ERROR  ][02 Nov 2015 22:07:35][TcpClient.py:32] connect exp: timed out
+[DEBUG  ][02 Nov 2015 22:07:35][MainWindow.py:41] connect success
+[ERROR  ][02 Nov 2015 22:07:59][TcpClient.py:32] connect exp: timed out
+[DEBUG  ][02 Nov 2015 22:07:59][MainWindow.py:41] connect success
+[ERROR  ][02 Nov 2015 22:09:38][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 22:09:38][MainWindow.py:45] connect error
+[ERROR  ][02 Nov 2015 22:09:47][TcpClient.py:32] connect exp: timed out
+[ERROR  ][02 Nov 2015 22:09:47][MainWindow.py:45] connect error
+[DEBUG  ][02 Nov 2015 22:10:40][MainWindow.py:41] connect success
+[DEBUG  ][02 Nov 2015 22:10:49][TcpClient.py:42] ------ CLOSE ------
+[DEBUG  ][02 Nov 2015 22:10:49][TcpClient.py:71] tcp client stopped

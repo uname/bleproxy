@@ -3,3 +3,4 @@ Protocol/BleProxyMsg_pb2.py
 Protocol/BleProxyMsg_pb2.pyc
 Protocol/tmp.txt
 Protocol/*.py
+PC/Python/*
