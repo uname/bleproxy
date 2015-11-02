@@ -1,5 +1,5 @@
 Protocol/com/
 Protocol/BleProxyMsg_pb2.py
 Protocol/BleProxyMsg_pb2.pyc
-Protocol/test.py
 Protocol/tmp.txt
+Protocol/*.py

@@ -29,7 +29,7 @@ public class ProtocolHandler {
 
         @Override
         public void onDisconnected() {
-            //TODO: tell the client, disconnected
+            mProxyServer.send(ProtocolPacker.getInstance().getBleDisconnectMsgBuff(""));
         }
 
         @Override

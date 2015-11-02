@@ -33,4 +33,10 @@ public class ProtocolPacker {
         return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.PROXY_DATA)
                 .setProxyData(BleProxy.ProxyData.newBuilder().setData(ByteString.copyFrom(data))).build().toByteArray();
     }
+
+    public byte[] getBleDisconnectMsgBuff(String address) {
+        mMsgBuilder.clear();
+        return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.BLE_DISCONNECT)
+                .setBleDisconnect(BleProxy.BleDisconnect.newBuilder().setAddress(address)).build().toByteArray();
+    }
 }

@@ -26,9 +26,9 @@ public final class BleProxy {
      */
     CONNECT(2, 3),
     /**
-     * <code>DISCONNECT = 4;</code>
+     * <code>BLE_DISCONNECT = 4;</code>
      */
-    DISCONNECT(3, 4),
+    BLE_DISCONNECT(3, 4),
     /**
      * <code>CONNECT_RESULT = 5;</code>
      */
@@ -52,9 +52,9 @@ public final class BleProxy {
      */
     public static final int CONNECT_VALUE = 3;
     /**
-     * <code>DISCONNECT = 4;</code>
+     * <code>BLE_DISCONNECT = 4;</code>
      */
-    public static final int DISCONNECT_VALUE = 4;
+    public static final int BLE_DISCONNECT_VALUE = 4;
     /**
      * <code>CONNECT_RESULT = 5;</code>
      */
@@ -72,7 +72,7 @@ public final class BleProxy {
         case 1: return CONTROL;
         case 2: return SCAN_RESULT;
         case 3: return CONNECT;
-        case 4: return DISCONNECT;
+        case 4: return BLE_DISCONNECT;
         case 5: return CONNECT_RESULT;
         case 6: return PROXY_DATA;
         default: return null;
@@ -1850,7 +1850,7 @@ public final class BleProxy {
     // @@protoc_insertion_point(class_scope:com.hqw.bleproxy.protocol.Connect)
   }
 
-  public interface DisconnectOrBuilder
+  public interface BleDisconnectOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required string address = 1;
@@ -1869,24 +1869,24 @@ public final class BleProxy {
         getAddressBytes();
   }
   /**
-   * Protobuf type {@code com.hqw.bleproxy.protocol.Disconnect}
+   * Protobuf type {@code com.hqw.bleproxy.protocol.BleDisconnect}
    */
-  public static final class Disconnect extends
+  public static final class BleDisconnect extends
       com.google.protobuf.GeneratedMessage
-      implements DisconnectOrBuilder {
-    // Use Disconnect.newBuilder() to construct.
-    private Disconnect(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements BleDisconnectOrBuilder {
+    // Use BleDisconnect.newBuilder() to construct.
+    private BleDisconnect(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private Disconnect(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private BleDisconnect(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final Disconnect defaultInstance;
-    public static Disconnect getDefaultInstance() {
+    private static final BleDisconnect defaultInstance;
+    public static BleDisconnect getDefaultInstance() {
       return defaultInstance;
     }
 
-    public Disconnect getDefaultInstanceForType() {
+    public BleDisconnect getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1896,7 +1896,7 @@ public final class BleProxy {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Disconnect(
+    private BleDisconnect(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1938,28 +1938,28 @@ public final class BleProxy {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Disconnect_descriptor;
+      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_BleDisconnect_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Disconnect_fieldAccessorTable
+      return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_BleDisconnect_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.hqw.bleproxy.protocol.BleProxy.Disconnect.class, com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder.class);
+              com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.class, com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Disconnect> PARSER =
-        new com.google.protobuf.AbstractParser<Disconnect>() {
-      public Disconnect parsePartialFrom(
+    public static com.google.protobuf.Parser<BleDisconnect> PARSER =
+        new com.google.protobuf.AbstractParser<BleDisconnect>() {
+      public BleDisconnect parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Disconnect(input, extensionRegistry);
+        return new BleDisconnect(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Disconnect> getParserForType() {
+    public com.google.protobuf.Parser<BleDisconnect> getParserForType() {
       return PARSER;
     }
 
@@ -2054,53 +2054,53 @@ public final class BleProxy {
       return super.writeReplace();
     }
 
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(byte[] data)
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(java.io.InputStream input)
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseDelimitedFrom(java.io.InputStream input)
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseDelimitedFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.hqw.bleproxy.protocol.BleProxy.Disconnect parseFrom(
+    public static com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2109,7 +2109,7 @@ public final class BleProxy {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.hqw.bleproxy.protocol.BleProxy.Disconnect prototype) {
+    public static Builder newBuilder(com.hqw.bleproxy.protocol.BleProxy.BleDisconnect prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -2121,24 +2121,24 @@ public final class BleProxy {
       return builder;
     }
     /**
-     * Protobuf type {@code com.hqw.bleproxy.protocol.Disconnect}
+     * Protobuf type {@code com.hqw.bleproxy.protocol.BleDisconnect}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.hqw.bleproxy.protocol.BleProxy.DisconnectOrBuilder {
+       implements com.hqw.bleproxy.protocol.BleProxy.BleDisconnectOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Disconnect_descriptor;
+        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_BleDisconnect_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Disconnect_fieldAccessorTable
+        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_BleDisconnect_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.hqw.bleproxy.protocol.BleProxy.Disconnect.class, com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder.class);
+                com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.class, com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder.class);
       }
 
-      // Construct using com.hqw.bleproxy.protocol.BleProxy.Disconnect.newBuilder()
+      // Construct using com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2169,23 +2169,23 @@ public final class BleProxy {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_Disconnect_descriptor;
+        return com.hqw.bleproxy.protocol.BleProxy.internal_static_com_hqw_bleproxy_protocol_BleDisconnect_descriptor;
       }
 
-      public com.hqw.bleproxy.protocol.BleProxy.Disconnect getDefaultInstanceForType() {
-        return com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance();
+      public com.hqw.bleproxy.protocol.BleProxy.BleDisconnect getDefaultInstanceForType() {
+        return com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.getDefaultInstance();
       }
 
-      public com.hqw.bleproxy.protocol.BleProxy.Disconnect build() {
-        com.hqw.bleproxy.protocol.BleProxy.Disconnect result = buildPartial();
+      public com.hqw.bleproxy.protocol.BleProxy.BleDisconnect build() {
+        com.hqw.bleproxy.protocol.BleProxy.BleDisconnect result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.hqw.bleproxy.protocol.BleProxy.Disconnect buildPartial() {
-        com.hqw.bleproxy.protocol.BleProxy.Disconnect result = new com.hqw.bleproxy.protocol.BleProxy.Disconnect(this);
+      public com.hqw.bleproxy.protocol.BleProxy.BleDisconnect buildPartial() {
+        com.hqw.bleproxy.protocol.BleProxy.BleDisconnect result = new com.hqw.bleproxy.protocol.BleProxy.BleDisconnect(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2198,16 +2198,16 @@ public final class BleProxy {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.hqw.bleproxy.protocol.BleProxy.Disconnect) {
-          return mergeFrom((com.hqw.bleproxy.protocol.BleProxy.Disconnect)other);
+        if (other instanceof com.hqw.bleproxy.protocol.BleProxy.BleDisconnect) {
+          return mergeFrom((com.hqw.bleproxy.protocol.BleProxy.BleDisconnect)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.hqw.bleproxy.protocol.BleProxy.Disconnect other) {
-        if (other == com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.hqw.bleproxy.protocol.BleProxy.BleDisconnect other) {
+        if (other == com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.getDefaultInstance()) return this;
         if (other.hasAddress()) {
           bitField0_ |= 0x00000001;
           address_ = other.address_;
@@ -2229,11 +2229,11 @@ public final class BleProxy {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.hqw.bleproxy.protocol.BleProxy.Disconnect parsedMessage = null;
+        com.hqw.bleproxy.protocol.BleProxy.BleDisconnect parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.hqw.bleproxy.protocol.BleProxy.Disconnect) e.getUnfinishedMessage();
+          parsedMessage = (com.hqw.bleproxy.protocol.BleProxy.BleDisconnect) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2318,15 +2318,15 @@ public final class BleProxy {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.hqw.bleproxy.protocol.Disconnect)
+      // @@protoc_insertion_point(builder_scope:com.hqw.bleproxy.protocol.BleDisconnect)
     }
 
     static {
-      defaultInstance = new Disconnect(true);
+      defaultInstance = new BleDisconnect(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:com.hqw.bleproxy.protocol.Disconnect)
+    // @@protoc_insertion_point(class_scope:com.hqw.bleproxy.protocol.BleDisconnect)
   }
 
   public interface ConnectResultOrBuilder
@@ -3351,19 +3351,19 @@ public final class BleProxy {
      */
     com.hqw.bleproxy.protocol.BleProxy.ConnectOrBuilder getConnectOrBuilder();
 
-    // optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;
+    // optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
      */
-    boolean hasDisconnect();
+    boolean hasBleDisconnect();
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
      */
-    com.hqw.bleproxy.protocol.BleProxy.Disconnect getDisconnect();
+    com.hqw.bleproxy.protocol.BleProxy.BleDisconnect getBleDisconnect();
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
      */
-    com.hqw.bleproxy.protocol.BleProxy.DisconnectOrBuilder getDisconnectOrBuilder();
+    com.hqw.bleproxy.protocol.BleProxy.BleDisconnectOrBuilder getBleDisconnectOrBuilder();
 
     // optional .com.hqw.bleproxy.protocol.ConnectResult connectResult = 6;
     /**
@@ -3495,14 +3495,14 @@ public final class BleProxy {
               break;
             }
             case 42: {
-              com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder subBuilder = null;
+              com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder subBuilder = null;
               if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                subBuilder = disconnect_.toBuilder();
+                subBuilder = bleDisconnect_.toBuilder();
               }
-              disconnect_ = input.readMessage(com.hqw.bleproxy.protocol.BleProxy.Disconnect.PARSER, extensionRegistry);
+              bleDisconnect_ = input.readMessage(com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(disconnect_);
-                disconnect_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(bleDisconnect_);
+                bleDisconnect_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000010;
               break;
@@ -3655,26 +3655,26 @@ public final class BleProxy {
       return connect_;
     }
 
-    // optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;
-    public static final int DISCONNECT_FIELD_NUMBER = 5;
-    private com.hqw.bleproxy.protocol.BleProxy.Disconnect disconnect_;
+    // optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;
+    public static final int BLEDISCONNECT_FIELD_NUMBER = 5;
+    private com.hqw.bleproxy.protocol.BleProxy.BleDisconnect bleDisconnect_;
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
      */
-    public boolean hasDisconnect() {
+    public boolean hasBleDisconnect() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
      */
-    public com.hqw.bleproxy.protocol.BleProxy.Disconnect getDisconnect() {
-      return disconnect_;
+    public com.hqw.bleproxy.protocol.BleProxy.BleDisconnect getBleDisconnect() {
+      return bleDisconnect_;
     }
     /**
-     * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+     * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
      */
-    public com.hqw.bleproxy.protocol.BleProxy.DisconnectOrBuilder getDisconnectOrBuilder() {
-      return disconnect_;
+    public com.hqw.bleproxy.protocol.BleProxy.BleDisconnectOrBuilder getBleDisconnectOrBuilder() {
+      return bleDisconnect_;
     }
 
     // optional .com.hqw.bleproxy.protocol.ConnectResult connectResult = 6;
@@ -3726,7 +3726,7 @@ public final class BleProxy {
       control_ = com.hqw.bleproxy.protocol.BleProxy.Control.getDefaultInstance();
       scanResult_ = com.hqw.bleproxy.protocol.BleProxy.ScanResult.getDefaultInstance();
       connect_ = com.hqw.bleproxy.protocol.BleProxy.Connect.getDefaultInstance();
-      disconnect_ = com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance();
+      bleDisconnect_ = com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.getDefaultInstance();
       connectResult_ = com.hqw.bleproxy.protocol.BleProxy.ConnectResult.getDefaultInstance();
       proxyData_ = com.hqw.bleproxy.protocol.BleProxy.ProxyData.getDefaultInstance();
     }
@@ -3757,8 +3757,8 @@ public final class BleProxy {
           return false;
         }
       }
-      if (hasDisconnect()) {
-        if (!getDisconnect().isInitialized()) {
+      if (hasBleDisconnect()) {
+        if (!getBleDisconnect().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -3795,7 +3795,7 @@ public final class BleProxy {
         output.writeMessage(4, connect_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(5, disconnect_);
+        output.writeMessage(5, bleDisconnect_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(6, connectResult_);
@@ -3830,7 +3830,7 @@ public final class BleProxy {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, disconnect_);
+          .computeMessageSize(5, bleDisconnect_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3951,7 +3951,7 @@ public final class BleProxy {
           getControlFieldBuilder();
           getScanResultFieldBuilder();
           getConnectFieldBuilder();
-          getDisconnectFieldBuilder();
+          getBleDisconnectFieldBuilder();
           getConnectResultFieldBuilder();
           getProxyDataFieldBuilder();
         }
@@ -3982,10 +3982,10 @@ public final class BleProxy {
           connectBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000008);
-        if (disconnectBuilder_ == null) {
-          disconnect_ = com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance();
+        if (bleDisconnectBuilder_ == null) {
+          bleDisconnect_ = com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.getDefaultInstance();
         } else {
-          disconnectBuilder_.clear();
+          bleDisconnectBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
         if (connectResultBuilder_ == null) {
@@ -4059,10 +4059,10 @@ public final class BleProxy {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        if (disconnectBuilder_ == null) {
-          result.disconnect_ = disconnect_;
+        if (bleDisconnectBuilder_ == null) {
+          result.bleDisconnect_ = bleDisconnect_;
         } else {
-          result.disconnect_ = disconnectBuilder_.build();
+          result.bleDisconnect_ = bleDisconnectBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
@@ -4108,8 +4108,8 @@ public final class BleProxy {
         if (other.hasConnect()) {
           mergeConnect(other.getConnect());
         }
-        if (other.hasDisconnect()) {
-          mergeDisconnect(other.getDisconnect());
+        if (other.hasBleDisconnect()) {
+          mergeBleDisconnect(other.getBleDisconnect());
         }
         if (other.hasConnectResult()) {
           mergeConnectResult(other.getConnectResult());
@@ -4144,8 +4144,8 @@ public final class BleProxy {
             return false;
           }
         }
-        if (hasDisconnect()) {
-          if (!getDisconnect().isInitialized()) {
+        if (hasBleDisconnect()) {
+          if (!getBleDisconnect().isInitialized()) {
             
             return false;
           }
@@ -4571,121 +4571,121 @@ public final class BleProxy {
         return connectBuilder_;
       }
 
-      // optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;
-      private com.hqw.bleproxy.protocol.BleProxy.Disconnect disconnect_ = com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance();
+      // optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;
+      private com.hqw.bleproxy.protocol.BleProxy.BleDisconnect bleDisconnect_ = com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.hqw.bleproxy.protocol.BleProxy.Disconnect, com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder, com.hqw.bleproxy.protocol.BleProxy.DisconnectOrBuilder> disconnectBuilder_;
+          com.hqw.bleproxy.protocol.BleProxy.BleDisconnect, com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder, com.hqw.bleproxy.protocol.BleProxy.BleDisconnectOrBuilder> bleDisconnectBuilder_;
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public boolean hasDisconnect() {
+      public boolean hasBleDisconnect() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public com.hqw.bleproxy.protocol.BleProxy.Disconnect getDisconnect() {
-        if (disconnectBuilder_ == null) {
-          return disconnect_;
+      public com.hqw.bleproxy.protocol.BleProxy.BleDisconnect getBleDisconnect() {
+        if (bleDisconnectBuilder_ == null) {
+          return bleDisconnect_;
         } else {
-          return disconnectBuilder_.getMessage();
+          return bleDisconnectBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public Builder setDisconnect(com.hqw.bleproxy.protocol.BleProxy.Disconnect value) {
-        if (disconnectBuilder_ == null) {
+      public Builder setBleDisconnect(com.hqw.bleproxy.protocol.BleProxy.BleDisconnect value) {
+        if (bleDisconnectBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          disconnect_ = value;
+          bleDisconnect_ = value;
           onChanged();
         } else {
-          disconnectBuilder_.setMessage(value);
+          bleDisconnectBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public Builder setDisconnect(
-          com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder builderForValue) {
-        if (disconnectBuilder_ == null) {
-          disconnect_ = builderForValue.build();
+      public Builder setBleDisconnect(
+          com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder builderForValue) {
+        if (bleDisconnectBuilder_ == null) {
+          bleDisconnect_ = builderForValue.build();
           onChanged();
         } else {
-          disconnectBuilder_.setMessage(builderForValue.build());
+          bleDisconnectBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public Builder mergeDisconnect(com.hqw.bleproxy.protocol.BleProxy.Disconnect value) {
-        if (disconnectBuilder_ == null) {
+      public Builder mergeBleDisconnect(com.hqw.bleproxy.protocol.BleProxy.BleDisconnect value) {
+        if (bleDisconnectBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              disconnect_ != com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance()) {
-            disconnect_ =
-              com.hqw.bleproxy.protocol.BleProxy.Disconnect.newBuilder(disconnect_).mergeFrom(value).buildPartial();
+              bleDisconnect_ != com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.getDefaultInstance()) {
+            bleDisconnect_ =
+              com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.newBuilder(bleDisconnect_).mergeFrom(value).buildPartial();
           } else {
-            disconnect_ = value;
+            bleDisconnect_ = value;
           }
           onChanged();
         } else {
-          disconnectBuilder_.mergeFrom(value);
+          bleDisconnectBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public Builder clearDisconnect() {
-        if (disconnectBuilder_ == null) {
-          disconnect_ = com.hqw.bleproxy.protocol.BleProxy.Disconnect.getDefaultInstance();
+      public Builder clearBleDisconnect() {
+        if (bleDisconnectBuilder_ == null) {
+          bleDisconnect_ = com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.getDefaultInstance();
           onChanged();
         } else {
-          disconnectBuilder_.clear();
+          bleDisconnectBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder getDisconnectBuilder() {
+      public com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder getBleDisconnectBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
-        return getDisconnectFieldBuilder().getBuilder();
+        return getBleDisconnectFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
-      public com.hqw.bleproxy.protocol.BleProxy.DisconnectOrBuilder getDisconnectOrBuilder() {
-        if (disconnectBuilder_ != null) {
-          return disconnectBuilder_.getMessageOrBuilder();
+      public com.hqw.bleproxy.protocol.BleProxy.BleDisconnectOrBuilder getBleDisconnectOrBuilder() {
+        if (bleDisconnectBuilder_ != null) {
+          return bleDisconnectBuilder_.getMessageOrBuilder();
         } else {
-          return disconnect_;
+          return bleDisconnect_;
         }
       }
       /**
-       * <code>optional .com.hqw.bleproxy.protocol.Disconnect disconnect = 5;</code>
+       * <code>optional .com.hqw.bleproxy.protocol.BleDisconnect bleDisconnect = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.hqw.bleproxy.protocol.BleProxy.Disconnect, com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder, com.hqw.bleproxy.protocol.BleProxy.DisconnectOrBuilder> 
-          getDisconnectFieldBuilder() {
-        if (disconnectBuilder_ == null) {
-          disconnectBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.hqw.bleproxy.protocol.BleProxy.Disconnect, com.hqw.bleproxy.protocol.BleProxy.Disconnect.Builder, com.hqw.bleproxy.protocol.BleProxy.DisconnectOrBuilder>(
-                  disconnect_,
+          com.hqw.bleproxy.protocol.BleProxy.BleDisconnect, com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder, com.hqw.bleproxy.protocol.BleProxy.BleDisconnectOrBuilder> 
+          getBleDisconnectFieldBuilder() {
+        if (bleDisconnectBuilder_ == null) {
+          bleDisconnectBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.hqw.bleproxy.protocol.BleProxy.BleDisconnect, com.hqw.bleproxy.protocol.BleProxy.BleDisconnect.Builder, com.hqw.bleproxy.protocol.BleProxy.BleDisconnectOrBuilder>(
+                  bleDisconnect_,
                   getParentForChildren(),
                   isClean());
-          disconnect_ = null;
+          bleDisconnect_ = null;
         }
-        return disconnectBuilder_;
+        return bleDisconnectBuilder_;
       }
 
       // optional .com.hqw.bleproxy.protocol.ConnectResult connectResult = 6;
@@ -4949,10 +4949,10 @@ public final class BleProxy {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_hqw_bleproxy_protocol_Connect_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_hqw_bleproxy_protocol_Disconnect_descriptor;
+    internal_static_com_hqw_bleproxy_protocol_BleDisconnect_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_hqw_bleproxy_protocol_Disconnect_fieldAccessorTable;
+      internal_static_com_hqw_bleproxy_protocol_BleDisconnect_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_hqw_bleproxy_protocol_ConnectResult_descriptor;
   private static
@@ -4982,25 +4982,26 @@ public final class BleProxy {
       "m.hqw.bleproxy.protocol.ControlCmd\"9\n\nSc" +
       "anResult\022\014\n\004name\030\001 \002(\t\022\017\n\007address\030\002 \002(\t\022" +
       "\014\n\004rssi\030\003 \002(\005\"\032\n\007Connect\022\017\n\007address\030\001 \002(" +
-      "\t\"\035\n\nDisconnect\022\017\n\007address\030\001 \002(\t\"4\n\rConn" +
-      "ectResult\022\016\n\006result\030\001 \002(\010\022\023\n\013errorString" +
-      "\030\002 \001(\t\"\031\n\tProxyData\022\014\n\004data\030\001 \002(\014\"\234\003\n\013Bl" +
-      "eProxyMsg\0223\n\003cmd\030\001 \002(\0162&.com.hqw.bleprox" +
-      "y.protocol.ProxyMsgCmd\0223\n\007control\030\002 \001(\0132",
-      "\".com.hqw.bleproxy.protocol.Control\0229\n\ns" +
-      "canResult\030\003 \001(\0132%.com.hqw.bleproxy.proto" +
-      "col.ScanResult\0223\n\007connect\030\004 \001(\0132\".com.hq" +
-      "w.bleproxy.protocol.Connect\0229\n\ndisconnec" +
-      "t\030\005 \001(\0132%.com.hqw.bleproxy.protocol.Disc" +
-      "onnect\022?\n\rconnectResult\030\006 \001(\0132(.com.hqw." +
-      "bleproxy.protocol.ConnectResult\0227\n\tproxy" +
-      "Data\030\007 \001(\0132$.com.hqw.bleproxy.protocol.P" +
-      "roxyData*l\n\013ProxyMsgCmd\022\013\n\007CONTROL\020\001\022\017\n\013" +
-      "SCAN_RESULT\020\002\022\013\n\007CONNECT\020\003\022\016\n\nDISCONNECT",
-      "\020\004\022\022\n\016CONNECT_RESULT\020\005\022\016\n\nPROXY_DATA\020\006*F" +
-      "\n\nControlCmd\022\013\n\007TURN_ON\020\000\022\014\n\010TURN_OFF\020\001\022" +
-      "\016\n\nSTART_SCAN\020\002\022\r\n\tSTOP_SCAN\020\003B%\n\031com.hq" +
-      "w.bleproxy.protocolB\010BleProxy"
+      "\t\" \n\rBleDisconnect\022\017\n\007address\030\001 \002(\t\"4\n\rC" +
+      "onnectResult\022\016\n\006result\030\001 \002(\010\022\023\n\013errorStr" +
+      "ing\030\002 \001(\t\"\031\n\tProxyData\022\014\n\004data\030\001 \002(\014\"\242\003\n" +
+      "\013BleProxyMsg\0223\n\003cmd\030\001 \002(\0162&.com.hqw.blep" +
+      "roxy.protocol.ProxyMsgCmd\0223\n\007control\030\002 \001",
+      "(\0132\".com.hqw.bleproxy.protocol.Control\0229" +
+      "\n\nscanResult\030\003 \001(\0132%.com.hqw.bleproxy.pr" +
+      "otocol.ScanResult\0223\n\007connect\030\004 \001(\0132\".com" +
+      ".hqw.bleproxy.protocol.Connect\022?\n\rbleDis" +
+      "connect\030\005 \001(\0132(.com.hqw.bleproxy.protoco" +
+      "l.BleDisconnect\022?\n\rconnectResult\030\006 \001(\0132(" +
+      ".com.hqw.bleproxy.protocol.ConnectResult" +
+      "\0227\n\tproxyData\030\007 \001(\0132$.com.hqw.bleproxy.p" +
+      "rotocol.ProxyData*p\n\013ProxyMsgCmd\022\013\n\007CONT" +
+      "ROL\020\001\022\017\n\013SCAN_RESULT\020\002\022\013\n\007CONNECT\020\003\022\022\n\016B",
+      "LE_DISCONNECT\020\004\022\022\n\016CONNECT_RESULT\020\005\022\016\n\nP" +
+      "ROXY_DATA\020\006*F\n\nControlCmd\022\013\n\007TURN_ON\020\000\022\014" +
+      "\n\010TURN_OFF\020\001\022\016\n\nSTART_SCAN\020\002\022\r\n\tSTOP_SCA" +
+      "N\020\003B%\n\031com.hqw.bleproxy.protocolB\010BlePro" +
+      "xy"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5025,11 +5026,11 @@ public final class BleProxy {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_hqw_bleproxy_protocol_Connect_descriptor,
               new java.lang.String[] { "Address", });
-          internal_static_com_hqw_bleproxy_protocol_Disconnect_descriptor =
+          internal_static_com_hqw_bleproxy_protocol_BleDisconnect_descriptor =
             getDescriptor().getMessageTypes().get(3);
-          internal_static_com_hqw_bleproxy_protocol_Disconnect_fieldAccessorTable = new
+          internal_static_com_hqw_bleproxy_protocol_BleDisconnect_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_hqw_bleproxy_protocol_Disconnect_descriptor,
+              internal_static_com_hqw_bleproxy_protocol_BleDisconnect_descriptor,
               new java.lang.String[] { "Address", });
           internal_static_com_hqw_bleproxy_protocol_ConnectResult_descriptor =
             getDescriptor().getMessageTypes().get(4);
@@ -5048,7 +5049,7 @@ public final class BleProxy {
           internal_static_com_hqw_bleproxy_protocol_BleProxyMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_hqw_bleproxy_protocol_BleProxyMsg_descriptor,
-              new java.lang.String[] { "Cmd", "Control", "ScanResult", "Connect", "Disconnect", "ConnectResult", "ProxyData", });
+              new java.lang.String[] { "Cmd", "Control", "ScanResult", "Connect", "BleDisconnect", "ConnectResult", "ProxyData", });
           return null;
         }
       };

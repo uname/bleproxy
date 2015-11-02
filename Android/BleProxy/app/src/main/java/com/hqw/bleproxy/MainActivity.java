@@ -15,8 +15,6 @@ import android.widget.Toast;
 
 import com.hqw.bleproxy.net.ConnectServer;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
