@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/bleproxy_address_form.ui'
 #
-# Created: Mon Nov 02 20:03:16 2015
+# Created: Tue Nov 03 19:42:24 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -66,7 +66,7 @@ class Ui_BleProxyAddressForm(object):
     def retranslateUi(self, BleProxyAddressForm):
         BleProxyAddressForm.setWindowTitle(QtGui.QApplication.translate("BleProxyAddressForm", "连接BleProxy", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("BleProxyAddressForm", "IP", None, QtGui.QApplication.UnicodeUTF8))
-        self.ipCmbBox.setItemText(0, QtGui.QApplication.translate("BleProxyAddressForm", "127.0.0.1", None, QtGui.QApplication.UnicodeUTF8))
+        self.ipCmbBox.setItemText(0, QtGui.QApplication.translate("BleProxyAddressForm", "10.66.236.189", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("BleProxyAddressForm", "Port", None, QtGui.QApplication.UnicodeUTF8))
         self.portCmbBox.setItemText(0, QtGui.QApplication.translate("BleProxyAddressForm", "8927", None, QtGui.QApplication.UnicodeUTF8))
         self.okBtn.setText(QtGui.QApplication.translate("BleProxyAddressForm", "确定", None, QtGui.QApplication.UnicodeUTF8))

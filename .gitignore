@@ -5,3 +5,4 @@ Protocol/tmp.txt
 Protocol/*.py
 PC/Python/*
 PC/BleProxyDesk/resource/generator/AppIcons.qrc
+PC/BleProxyDesk/resource/icons/ext

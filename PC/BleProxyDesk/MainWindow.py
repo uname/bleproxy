@@ -8,7 +8,8 @@ from form.TipPupup import TipPupup
 from ui.Ui_MainWindow import Ui_MainWindow
 from presenter.MainWindowPresenter import MainWindowPresenter
 from form.BleproxyAddressDialog import BleproxyAddressDialog
-from PyQt4 import QtGui
+from form.ProgressDialog import ProgressDialog
+from PyQt4 import QtGui, QtCore
 
 class MainWindow(QtGui.QMainWindow):
     
@@ -25,6 +26,7 @@ class MainWindow(QtGui.QMainWindow):
     def setupSignals(self):
         self.ui.connectBtn.clicked.connect(self.onConnectBtnClicked)
         self.ui.scanBtn.clicked.connect(self.onScanBtnClicked)
+        self.ui.bleListWgt.itemDoubleClicked.connect(self.onBleItemDoubleClicked)
         self.connect(self.bleproxyAddressDialog, signals.SIG_CONNECT_SERVER, self.onConnectServer)
         
         self.connect(sigObject, signals.SIG_MSG_RECVED, self.presenter.handleDataBuff)
@@ -46,6 +48,11 @@ class MainWindow(QtGui.QMainWindow):
         else:
             self.bleproxyAddressDialog.show_()
     
+    def onBleItemDoubleClicked(self, item):
+        logger.debug("connect to ble device: %s" % item.getAddress())
+        dialog = ProgressDialog(self)
+        dialog.show()
+        
     def onScanBtnClicked(self):
         ret, scanning = self.presenter.scan()
         if not ret:

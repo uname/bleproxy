@@ -23,3 +23,6 @@ class BleListItem(QtGui.QListWidgetItem):
         
     def updateRssi(self, rssi):
         self.setBleInfo(rssi)
+    
+    def getAddress(self):
+        return self.address
