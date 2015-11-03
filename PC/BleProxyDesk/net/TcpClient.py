@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 from log import logger
 from SigObject import sigObject
+import struct
 import signals
 import socket
 import select
@@ -8,24 +9,25 @@ import threading
 
 class TcpClient(threading.Thread):
     
-    RECV_SIZE = 262144
-    
     def __init__(self, ip=None, port=None):
         threading.Thread.__init__(self)
         self.stopflag = False
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.setblocking(0)
         self.ip, self.port = ip, port
+        self.connected = False
+    
+    def isConnected(self):
+        return self.connected
         
     def connect(self):
         try:
             if self.sock is None:
-                self.createSockByType(self.sockType)
+                self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 
             self.sock.settimeout(0.3)
             self.sock.connect((self.ip, self.port))
             self.sock.setblocking(0)
-            self.conFlag = True
+            self.connected = True
             return True
             
         except Exception as e:
@@ -45,11 +47,13 @@ class TcpClient(threading.Thread):
         
         self.sock.close()
         self.sock = None
+        self.connected = False
             
     def stop(self):
         self.stopflag = True
         
     def run(self):
+        data = ""
         while not self.stopflag:
             rfds, _, efds = select.select([self.sock], [], [self.sock], 0.1)
             if len(efds) > 0:
@@ -59,13 +63,24 @@ class TcpClient(threading.Thread):
             if len(rfds) < 1:
                 continue
                 
-            data = self.sock.recv(SockClient.RECV_SIZE)
-            if data == "":
-                logger.error("socket closed")
+            try:
+                data = self.sock.recv(2)
+            except Exception as e:
+                logger.error("sock exp. %s" % e.message)
                 break
-            
-            logger.debug("data from %s:%d -> %s" % (self.ip, self.port, data))
-            sigObject.emit(signals.SIG_DATA_RECVED, self._id, data)
+            if not data:
+                break
+                
+            size = struct.unpack("H", data)[0]
+            try:
+                data = self.sock.recv(size)
+            except Exception as e:
+                logger.error("sock exp. %s" % e.message)
+                break
+            if not data:
+                break
+                
+            sigObject.emit(signals.SIG_MSG_RECVED, data)
         
         self.close()
         logger.debug("tcp client stopped")

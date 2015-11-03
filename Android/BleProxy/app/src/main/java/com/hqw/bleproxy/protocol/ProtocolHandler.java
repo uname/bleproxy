@@ -20,6 +20,7 @@ public class ProtocolHandler {
         @Override
         public void onScanResult(String deviceName, String address, int rssi) {
             LogUtil.d(TAG, "deviceName: " + deviceName + ", address: " + address + ", rssi: " + rssi);
+            mProxyServer.send(ProtocolPacker.getInstance().getScanResultMsgBuff(deviceName, address,rssi));
         }
 
         @Override

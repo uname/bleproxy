@@ -28,6 +28,12 @@ public class ProtocolPacker {
                     .setErrorString(errorString)).build().toByteArray();
     }
 
+    public byte[] getScanResultMsgBuff(String deviceName, String address, int rssi) {
+        mMsgBuilder.clear();
+        return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.SCAN_RESULT)
+                .setScanResult(BleProxy.ScanResult.newBuilder().setName(deviceName).setAddress(address).setRssi(rssi)).build().toByteArray();
+    }
+
     public byte[] getProxyDataMsgBuff(byte[] data) {
         mMsgBuilder.clear();
         return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.PROXY_DATA)

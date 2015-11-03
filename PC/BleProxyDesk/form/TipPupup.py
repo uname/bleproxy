@@ -20,7 +20,7 @@ class TipPupup(QWidget):
     WARNING_ICON_PATH  = ":/tip/icons/tip/warning.png"
     ERROR_ICON_PATH    = ":/tip/icons/tip/error.png"
 
-    SHORT_TIME         = 2000
+    SHORT_TIME         = 200
     LONG_TIME          = 4000
     
     MAX_QUEUE_SIZE = 20

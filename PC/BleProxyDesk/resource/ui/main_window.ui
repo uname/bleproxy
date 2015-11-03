@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>BleProxyDesk</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 9pt &quot;宋体&quot;;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -32,7 +35,7 @@
      <widget class="QPushButton" name="scanBtn">
       <property name="maximumSize">
        <size>
-        <width>85</width>
+        <width>100</width>
         <height>16777215</height>
        </size>
       </property>
@@ -48,13 +51,13 @@
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Welcome</string>
        </attribute>
       </widget>
      </widget>
     </item>
     <item row="1" column="0" colspan="2">
-     <widget class="QListWidget" name="bleListWgt">
+     <widget class="BleListWidget" name="bleListWgt">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -63,7 +66,7 @@
       </property>
       <property name="maximumSize">
        <size>
-        <width>240</width>
+        <width>250</width>
         <height>16777215</height>
        </size>
       </property>
@@ -77,12 +80,19 @@
      <x>0</x>
      <y>0</y>
      <width>843</width>
-     <height>23</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BleListWidget</class>
+   <extends>QListWidget</extends>
+   <header location="global">view/BleListWidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

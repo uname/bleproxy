@@ -4,3 +4,4 @@ Protocol/BleProxyMsg_pb2.pyc
 Protocol/tmp.txt
 Protocol/*.py
 PC/Python/*
+PC/BleProxyDesk/resource/generator/AppIcons.qrc
