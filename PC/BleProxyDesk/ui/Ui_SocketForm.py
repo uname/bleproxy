@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/socket_form.ui'
 #
-# Created: Wed Nov 04 15:10:22 2015
+# Created: Wed Nov 04 16:38:41 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,6 +32,9 @@ class Ui_SocketForm(object):
         self.horizontalLayout_2.addWidget(self.disconnectBleBtn)
         spacerItem = QtGui.QSpacerItem(528, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
+        self.sendFileBtn = QtGui.QPushButton(self.groupBox)
+        self.sendFileBtn.setObjectName(_fromUtf8("sendFileBtn"))
+        self.horizontalLayout_2.addWidget(self.sendFileBtn)
         self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
@@ -100,6 +103,7 @@ class Ui_SocketForm(object):
     def retranslateUi(self, SocketForm):
         SocketForm.setWindowTitle(QtGui.QApplication.translate("SocketForm", "Form", None, QtGui.QApplication.UnicodeUTF8))
         self.disconnectBleBtn.setText(QtGui.QApplication.translate("SocketForm", "断开蓝牙", None, QtGui.QApplication.UnicodeUTF8))
+        self.sendFileBtn.setText(QtGui.QApplication.translate("SocketForm", "发送文件", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("SocketForm", "Rx", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("SocketForm", "Tx", None, QtGui.QApplication.UnicodeUTF8))
         self.resetBytesBtn.setText(QtGui.QApplication.translate("SocketForm", "清零", None, QtGui.QApplication.UnicodeUTF8))

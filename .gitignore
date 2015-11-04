@@ -7,3 +7,4 @@ PC/Python/*
 PC/BleProxyDesk/resource/generator/AppIcons.qrc
 PC/BleProxyDesk/resource/icons/ext
 PC/BleProxyDesk/debug.log
+PC/BleProxyDesk/google/*.pyc
