@@ -38,6 +38,7 @@ class MainWindow(QtGui.QMainWindow):
         self.connect(sigObject, signals.SIG_CONNECT_RESULT, self.onConnectResult)
         self.connect(sigObject, signals.SIG_DISCONNECT_BLE, self.onDisconnectBle)
         self.connect(sigObject, signals.SIG_SERVER_CLOSED, self.onServerClosed)
+        self.connect(sigObject, signals.SIG_BLE_DISCONNECTED, self.onBleDisconnected)
     
     def setupUi_disconnected(self):
         self.ui.scanBtn.setEnabled(False)
@@ -72,6 +73,10 @@ class MainWindow(QtGui.QMainWindow):
         self.onDisconnectBle()
         self.presenter.stopTcpClient()
         self.setupUi_disconnected()
+    
+    def onBleDisconnected(self):
+        self.tipPupup.makeErrorText(text.BLE_DISCONNECTED, 4000)
+        self.onDisconnectBle()
         
     def onBleItemDoubleClicked(self, item):
         if item.isConnected():
