@@ -34,6 +34,7 @@ class MainWindow(QtGui.QMainWindow):
     
     def setupUi_disconnected(self):
         self.ui.scanBtn.setEnabled(False)
+        self.ui.scanBtn.setText(text.TEXT_ON_NOT_SCANNING)
         self.ui.connectBtn.setText(text.CONNECT)
         self.ui.bleListWgt.clear_()
         

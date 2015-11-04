@@ -31,6 +31,7 @@ class MainWindowPresenter:
         if self.tcpClient:
             self.tcpClient.stop()
             self.tcpClient = None
+            self.scanning = False
         
     def scan(self):
         buff = self.scanning and protocolPacker.getStopScanBuff() or protocolPacker.getStartScanBuff()

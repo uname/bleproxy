@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case ConnectServer.MSG_CLIENT_DISCONNECTED:
                     addLog("disconnected: " + msg.obj);
+                    BLEHelper.getInstance().btStopScan();
                     break;
 
                 default:
