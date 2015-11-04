@@ -84,4 +84,6 @@ class TcpClient(threading.Thread):
         
         self.close()
         logger.debug("tcp client stopped")
+        if not self.stopflag:
+            sigObject.emit(signals.SIG_SERVER_CLOSED)
         

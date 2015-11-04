@@ -37,6 +37,7 @@ class MainWindow(QtGui.QMainWindow):
         self.connect(sigObject, signals.SIG_BLE_DEVICE, self.onBleDevice)
         self.connect(sigObject, signals.SIG_CONNECT_RESULT, self.onConnectResult)
         self.connect(sigObject, signals.SIG_DISCONNECT_BLE, self.onDisconnectBle)
+        self.connect(sigObject, signals.SIG_SERVER_CLOSED, self.onServerClosed)
     
     def setupUi_disconnected(self):
         self.ui.scanBtn.setEnabled(False)
@@ -64,6 +65,13 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.bleListWgt.setCurAddress(None)
         self.ui.scanBtn.setEnabled(True)
         self.presenter.setScanning(False)
+    
+    def onServerClosed(self):
+        logger.debug("server closed")
+        self.tipPupup.makeErrorText(text.SERVER_CLOSED, 4000)
+        self.onDisconnectBle()
+        self.presenter.stopTcpClient()
+        self.setupUi_disconnected()
         
     def onBleItemDoubleClicked(self, item):
         if item.isConnected():
