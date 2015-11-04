@@ -38,5 +38,12 @@ class ProtocolPacker:
         self.msg.disconnect.address = address
         pbBuff = self.msg.SerializeToString()
         return self.__pack(pbBuff)
+    
+    def getProxyDataBuff(self, data):
+        self.msg.Clear()
+        self.msg.cmd = bleProxyPb.PROXY_DATA
+        self.msg.proxyData.data = data
+        pbBuff = self.msg.SerializeToString()
+        return self.__pack(pbBuff)
         
 protocolPacker = ProtocolPacker()

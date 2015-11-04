@@ -9,7 +9,8 @@ class ProtocolHandler:
     def __init__(self):
         self.msg = bleProxyPb.BleProxyMsg()
         self.cmdHandlerDict = {bleProxyPb.SCAN_RESULT: self.onScanResult,
-                               bleProxyPb.CONNECT_RESULT: self.onConnectResult }
+                               bleProxyPb.CONNECT_RESULT: self.onConnectResult,
+                               bleProxyPb.PROXY_DATA: self.onProxyData }
         
     def handleDataBuff(self, pbBuff):
         self.msg.Clear()
@@ -32,5 +33,8 @@ class ProtocolHandler:
     def onConnectResult(self):
         sigObject.emit(signals.SIG_CONNECT_RESULT,  self.msg.connectResult.result,
             self.msg.connectResult.address, self.msg.connectResult.errorString)
+    
+    def onProxyData(self):
+        sigObject.emit(signals.SIG_PROXY_DATA, self.msg.proxyData.data)
         
 protocolHandler = ProtocolHandler()

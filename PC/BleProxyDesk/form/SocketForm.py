@@ -35,6 +35,8 @@ class SocketForm(QWidget):
         self.ui.sendBtn.clicked.connect(self.sendData)
         self.ui.cleanBtn.clicked.connect(self.ui.recvTextBrowser.clear)
         self.ui.resetBytesBtn.clicked.connect(self.resetBytes)
+        
+        self.connect(sigObject, signals.SIG_PROXY_DATA, self.onProxyData)
     
     def disconnectBle(self):
         if self.sock.sendall(protocolPacker.getDisconnectBuff("")):
@@ -42,6 +44,9 @@ class SocketForm(QWidget):
         
     def onDisonnectBtnClicked(self):
         pass
+    
+    def onProxyData(self, data):
+        self.addData(data, tag=config.RECV_TAG)
         
     def resetBytes(self):
         self.ui.rxLcdNumber.display(0)
@@ -93,7 +98,7 @@ class SocketForm(QWidget):
                 return False
         n = 0
         try:
-            n = self.sock.sendall(data)
+            n = self.sock.sendall(protocolPacker.getProxyDataBuff(data))
         except Exception as e:
             logger.error("send data error: %s" % e.message)
         
