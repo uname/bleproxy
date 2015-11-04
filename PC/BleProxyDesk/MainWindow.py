@@ -1,10 +1,11 @@
 #-*- coding: utf-8 -*-
 import signals
-import error
 import text
+import config
 from log import logger
 from SigObject import sigObject
 from form.TipPupup import TipPupup
+from ui.AppIcons import *
 from ui.Ui_MainWindow import Ui_MainWindow
 from presenter.MainWindowPresenter import MainWindowPresenter
 from form.BleproxyAddressDialog import BleproxyAddressDialog
@@ -17,6 +18,7 @@ class MainWindow(QtGui.QMainWindow):
         QtGui.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.archView.setPixmap(QtGui.QPixmap(config.ARCH_PNG))
         self.setupUi_disconnected()
         self.tipPupup = TipPupup()
         self.presenter = MainWindowPresenter(self)
@@ -88,7 +90,7 @@ class MainWindow(QtGui.QMainWindow):
             self.tipPupup.makeInfoText(text.CONNECTED_TIPS)
         else:
             logger.error("connect error")
-            self.tipPupup.makeErrorText(error.TCP_CLIENT_CONNECT_ERROR)
+            self.tipPupup.makeErrorText(text.TCP_CLIENT_CONNECT_ERROR)
     
     def onConnectResult(self, result, address, errorString):
         if self.progressDialog.isActiveWindow():
