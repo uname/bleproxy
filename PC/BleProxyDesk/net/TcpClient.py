@@ -31,6 +31,7 @@ class TcpClient(threading.Thread):
             return True
             
         except Exception as e:
+            self.sock = None
             logger.error("connect exp: %s" % e.message)
             return
         

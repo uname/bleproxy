@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/main_window.ui'
 #
-# Created: Wed Nov 04 16:38:11 2015
+# Created: Wed Nov 04 18:34:21 2015
 #      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,13 +38,24 @@ class Ui_MainWindow(object):
         self.sockTab.setObjectName(_fromUtf8("sockTab"))
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
+        self.gridLayout_2 = QtGui.QGridLayout(self.tab)
+        self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
+        self.archView = QtGui.QLabel(self.tab)
+        self.archView.setMinimumSize(QtCore.QSize(459, 147))
+        self.archView.setObjectName(_fromUtf8("archView"))
+        self.gridLayout_2.addWidget(self.archView, 1, 0, 1, 1)
+        spacerItem = QtGui.QSpacerItem(142, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem, 1, 1, 1, 1)
+        spacerItem1 = QtGui.QSpacerItem(20, 169, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_2.addItem(spacerItem1, 2, 0, 1, 1)
+        self.versionLabel = QtGui.QLabel(self.tab)
+        self.versionLabel.setObjectName(_fromUtf8("versionLabel"))
+        self.gridLayout_2.addWidget(self.versionLabel, 3, 0, 1, 2)
         self.textEdit = QtGui.QTextEdit(self.tab)
-        self.textEdit.setGeometry(QtCore.QRect(10, 10, 611, 81))
+        self.textEdit.setMaximumSize(QtCore.QSize(16777215, 70))
         self.textEdit.setFrameShape(QtGui.QFrame.NoFrame)
         self.textEdit.setObjectName(_fromUtf8("textEdit"))
-        self.archView = QtGui.QLabel(self.tab)
-        self.archView.setGeometry(QtCore.QRect(10, 110, 459, 147))
-        self.archView.setObjectName(_fromUtf8("archView"))
+        self.gridLayout_2.addWidget(self.textEdit, 0, 0, 1, 2)
         self.sockTab.addTab(self.tab, _fromUtf8(""))
         self.gridLayout.addWidget(self.sockTab, 0, 2, 2, 1)
         self.bleListWgt = BleListWidget(self.centralwidget)
@@ -69,13 +80,14 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "BleProxyDesk", None, QtGui.QApplication.UnicodeUTF8))
         self.connectBtn.setText(QtGui.QApplication.translate("MainWindow", "连接", None, QtGui.QApplication.UnicodeUTF8))
         self.scanBtn.setText(QtGui.QApplication.translate("MainWindow", "扫描蓝牙", None, QtGui.QApplication.UnicodeUTF8))
+        self.archView.setText(QtGui.QApplication.translate("MainWindow", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+        self.versionLabel.setText(QtGui.QApplication.translate("MainWindow", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
         self.textEdit.setHtml(QtGui.QApplication.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'宋体\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">BleProxy是用于桥接BLE蓝牙和WiFi通讯的代理</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">通过PC端BleProxyDesk连接到Android端的BleProxy服务，即可方便的进行BLE蓝牙通讯调试</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.archView.setText(QtGui.QApplication.translate("MainWindow", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
         self.sockTab.setTabText(self.sockTab.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Welcome", None, QtGui.QApplication.UnicodeUTF8))
 
 from view.SockTab import SockTab
