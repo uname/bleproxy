@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 import utils
 import signals
+import config
 from ui.Ui_BleProxyAddressForm import Ui_BleProxyAddressForm
 from PyQt4 import QtGui
 
@@ -10,6 +11,7 @@ class BleproxyAddressDialog(QtGui.QDialog):
         QtGui.QDialog.__init__(self)
         self.ui = Ui_BleProxyAddressForm()
         self.ui.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon(config.LOGO_PNG))
         self.initIpList()
         self.setModal(True)
         self.setupSignals()

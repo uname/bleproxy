@@ -18,6 +18,7 @@ class MainWindow(QtGui.QMainWindow):
         QtGui.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon(config.LOGO_PNG))
         self.ui.archView.setPixmap(QtGui.QPixmap(config.ARCH_PNG))
         self.setupUi_disconnected()
         self.tipPupup = TipPupup()
