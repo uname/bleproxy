@@ -32,7 +32,7 @@ public class BLEHelper {
 
 	public interface OnBleListener {
 		void onScanResult(String deviceName, String address, int rssi);
-		void onConnectResult(boolean result);
+		void onConnectResult(boolean result, String address);
 		void onDisconnected();
 		void onDataReceived(byte[] data);
 	}
@@ -47,7 +47,8 @@ public class BLEHelper {
 
 			switch (msg.what) {
 				case BLEBroadcastReceiver.MSG_GATT_SERVICES_DISCOVERED:
-					mListener.onConnectResult(BLEHelper.getInstance().realBtConnect((String) msg.obj));
+					String address = (String) msg.obj;
+					mListener.onConnectResult(BLEHelper.getInstance().realBtConnect(address), address);
 					break;
 
 				case BLEBroadcastReceiver.MSG_GATT_DISCONNECTED:
@@ -183,6 +184,7 @@ public class BLEHelper {
 		if(context == null) {
 			context = BleProxyApp.getContext();
 		}
+		btStopScan();
 		return btConnectToDevice(context, address);
 	}
 	

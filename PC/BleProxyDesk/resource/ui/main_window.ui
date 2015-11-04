@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>843</width>
+    <width>849</width>
     <height>516</height>
    </rect>
   </property>
@@ -20,6 +20,12 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QPushButton" name="connectBtn">
+      <property name="minimumSize">
+       <size>
+        <width>85</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
         <width>85</width>
@@ -33,6 +39,12 @@
     </item>
     <item row="0" column="1">
      <widget class="QPushButton" name="scanBtn">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>23</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
         <width>100</width>
@@ -45,7 +57,7 @@
      </widget>
     </item>
     <item row="0" column="2" rowspan="2">
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="SockTab" name="sockTab">
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -60,8 +72,8 @@
      <widget class="BleListWidget" name="bleListWgt">
       <property name="minimumSize">
        <size>
-        <width>0</width>
-        <height>351</height>
+        <width>191</width>
+        <height>433</height>
        </size>
       </property>
       <property name="maximumSize">
@@ -79,7 +91,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>843</width>
+     <width>849</width>
      <height>18</height>
     </rect>
    </property>
@@ -91,6 +103,12 @@
    <class>BleListWidget</class>
    <extends>QListWidget</extends>
    <header location="global">view/BleListWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SockTab</class>
+   <extends>QTabWidget</extends>
+   <header location="global">view/SockTab.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

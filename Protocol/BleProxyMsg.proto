@@ -3,9 +3,10 @@ enum ProxyMsgCmd
     CONTROL = 1;
     SCAN_RESULT = 2;
     CONNECT = 3;
-    BLE_DISCONNECT = 4;
-    CONNECT_RESULT = 5;
-    PROXY_DATA = 6;
+    DISCONNECT = 4;
+    BLE_DISCONNECTED = 5;
+    CONNECT_RESULT = 6;
+    PROXY_DATA = 7;
 }
 
 enum ControlCmd
@@ -33,7 +34,12 @@ message Connect
     required string address = 1;
 }
 
-message BleDisconnect
+message Disconnect
+{
+    optional string address = 1[default=""];
+}
+
+message BleDisconnected
 {
     required string address = 1;
 }
@@ -41,7 +47,8 @@ message BleDisconnect
 message ConnectResult
 {
     required bool result = 1;
-    optional string errorString = 2;
+    required string address = 2;
+    optional string errorString = 3[default=""];
 }
 
 message ProxyData
@@ -55,7 +62,8 @@ message BleProxyMsg
     optional Control control = 2;
     optional ScanResult scanResult = 3;
     optional Connect connect = 4;
-    optional BleDisconnect bleDisconnect = 5;
-    optional ConnectResult connectResult = 6;
-    optional ProxyData proxyData = 7;
+    optional Disconnect disconnect = 5;
+    optional BleDisconnected bleDisconnected = 6;
+    optional ConnectResult connectResult = 7;
+    optional ProxyData proxyData = 8;
 }

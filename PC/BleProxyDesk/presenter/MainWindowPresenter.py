@@ -12,6 +12,9 @@ class MainWindowPresenter:
         self.tcpClient = None
         self.scanning = False
     
+    def getTcpClient(self):
+        return self.tcpClient
+        
     def isConnected(self):
         return self.tcpClient and self.tcpClient.isConnected()
         
@@ -26,6 +29,10 @@ class MainWindowPresenter:
             self.tcpClient.start()
             
         return ret
+        
+    def connectBleDevice(self, address):
+        buff = protocolPacker.getConnectBuff(address)
+        return self.tcpClient.sendall(buff)
     
     def stopTcpClient(self):
         if self.tcpClient:

@@ -8,7 +8,15 @@ class BleListItem(QtGui.QListWidgetItem):
         QtGui.QListWidgetItem.__init__(self)
         self.name, self.address, self.rssi = name, address, rssi
         self.setBleInfo(rssi)
+        self.conflag = False
     
+    def setConnected(self, flag):
+        self.conflag = flag
+        self.setBackgroundColor(QtGui.QColor(flag and 0x00ff00 or 0xffffff))
+    
+    def isConnected(self):
+        return self.conflag
+        
     def setBleInfo(self, rssi):
         iconPath = ":app/icons/app/sig_1.png"
         if rssi > -45:

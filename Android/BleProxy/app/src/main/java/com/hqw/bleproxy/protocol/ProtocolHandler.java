@@ -24,8 +24,8 @@ public class ProtocolHandler {
         }
 
         @Override
-        public void onConnectResult(boolean result) {
-            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(result, ""));
+        public void onConnectResult(boolean result, String address) {
+            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(result, address, ""));
         }
 
         @Override
@@ -72,6 +72,10 @@ public class ProtocolHandler {
                 onConnect(bleProxyMsg.getConnect());
                 break;
 
+            case BleProxy.ProxyMsgCmd.DISCONNECT_VALUE:
+                onDisconnect(bleProxyMsg.getDisconnect());
+                break;
+
             case BleProxy.ProxyMsgCmd.PROXY_DATA_VALUE:
                 onSend(bleProxyMsg.getProxyData());
                 break;
@@ -108,11 +112,16 @@ public class ProtocolHandler {
     private void onConnect(BleProxy.Connect connectMsg) {
         LogUtil.d(TAG, "on connect device: " + connectMsg.getAddress());
         if(!BLEHelper.getInstance().btConnect(null, connectMsg.getAddress())) {
-            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(false, ""));
+            mProxyServer.send(ProtocolPacker.getInstance().getConnectResultMsgBuff(false, connectMsg.getAddress(), ""));
         } else {
             // attention: even btConnect return true, we are not sure weather it's connected
             // we need broadcast
         }
+    }
+
+    private void onDisconnect(BleProxy.Disconnect disconnect) {
+        LogUtil.d(TAG, "disconnect ble device: " + disconnect.getAddress());
+        BLEHelper.getInstance().btDisconnect(disconnect.getAddress());
     }
 
     private void onSend(BleProxy.ProxyData proxyData) {

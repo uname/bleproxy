@@ -24,7 +24,7 @@ class TcpClient(threading.Thread):
             if self.sock is None:
                 self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 
-            self.sock.settimeout(0.3)
+            self.sock.settimeout(0.5)
             self.sock.connect((self.ip, self.port))
             self.sock.setblocking(0)
             self.connected = True

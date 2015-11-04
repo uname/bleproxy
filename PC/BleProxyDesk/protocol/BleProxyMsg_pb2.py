@@ -14,7 +14,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='BleProxyMsg.proto',
   package='',
-  serialized_pb='\n\x11\x42leProxyMsg.proto\"#\n\x07\x43ontrol\x12\x18\n\x03\x63md\x18\x01 \x02(\x0e\x32\x0b.ControlCmd\"9\n\nScanResult\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x02(\t\x12\x0c\n\x04rssi\x18\x03 \x02(\x05\"\x1a\n\x07\x43onnect\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x02(\t\" \n\rBleDisconnect\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x02(\t\"4\n\rConnectResult\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x13\n\x0b\x65rrorString\x18\x02 \x01(\t\"\x19\n\tProxyData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x02(\x0c\"\xec\x01\n\x0b\x42leProxyMsg\x12\x19\n\x03\x63md\x18\x01 \x02(\x0e\x32\x0c.ProxyMsgCmd\x12\x19\n\x07\x63ontrol\x18\x02 \x01(\x0b\x32\x08.Control\x12\x1f\n\nscanResult\x18\x03 \x01(\x0b\x32\x0b.ScanResult\x12\x19\n\x07\x63onnect\x18\x04 \x01(\x0b\x32\x08.Connect\x12%\n\rbleDisconnect\x18\x05 \x01(\x0b\x32\x0e.BleDisconnect\x12%\n\rconnectResult\x18\x06 \x01(\x0b\x32\x0e.ConnectResult\x12\x1d\n\tproxyData\x18\x07 \x01(\x0b\x32\n.ProxyData*p\n\x0bProxyMsgCmd\x12\x0b\n\x07\x43ONTROL\x10\x01\x12\x0f\n\x0bSCAN_RESULT\x10\x02\x12\x0b\n\x07\x43ONNECT\x10\x03\x12\x12\n\x0e\x42LE_DISCONNECT\x10\x04\x12\x12\n\x0e\x43ONNECT_RESULT\x10\x05\x12\x0e\n\nPROXY_DATA\x10\x06*F\n\nControlCmd\x12\x0b\n\x07TURN_ON\x10\x00\x12\x0c\n\x08TURN_OFF\x10\x01\x12\x0e\n\nSTART_SCAN\x10\x02\x12\r\n\tSTOP_SCAN\x10\x03')
+  serialized_pb='\n\x11\x42leProxyMsg.proto\"#\n\x07\x43ontrol\x12\x18\n\x03\x63md\x18\x01 \x02(\x0e\x32\x0b.ControlCmd\"9\n\nScanResult\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x02(\t\x12\x0c\n\x04rssi\x18\x03 \x02(\x05\"\x1a\n\x07\x43onnect\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x02(\t\"\x1f\n\nDisconnect\x12\x11\n\x07\x61\x64\x64ress\x18\x01 \x01(\t:\x00\"\"\n\x0f\x42leDisconnected\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x02(\t\"G\n\rConnectResult\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x02(\t\x12\x15\n\x0b\x65rrorString\x18\x03 \x01(\t:\x00\"\x19\n\tProxyData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x02(\x0c\"\x91\x02\n\x0b\x42leProxyMsg\x12\x19\n\x03\x63md\x18\x01 \x02(\x0e\x32\x0c.ProxyMsgCmd\x12\x19\n\x07\x63ontrol\x18\x02 \x01(\x0b\x32\x08.Control\x12\x1f\n\nscanResult\x18\x03 \x01(\x0b\x32\x0b.ScanResult\x12\x19\n\x07\x63onnect\x18\x04 \x01(\x0b\x32\x08.Connect\x12\x1f\n\ndisconnect\x18\x05 \x01(\x0b\x32\x0b.Disconnect\x12)\n\x0f\x62leDisconnected\x18\x06 \x01(\x0b\x32\x10.BleDisconnected\x12%\n\rconnectResult\x18\x07 \x01(\x0b\x32\x0e.ConnectResult\x12\x1d\n\tproxyData\x18\x08 \x01(\x0b\x32\n.ProxyData*\x82\x01\n\x0bProxyMsgCmd\x12\x0b\n\x07\x43ONTROL\x10\x01\x12\x0f\n\x0bSCAN_RESULT\x10\x02\x12\x0b\n\x07\x43ONNECT\x10\x03\x12\x0e\n\nDISCONNECT\x10\x04\x12\x14\n\x10\x42LE_DISCONNECTED\x10\x05\x12\x12\n\x0e\x43ONNECT_RESULT\x10\x06\x12\x0e\n\nPROXY_DATA\x10\x07*F\n\nControlCmd\x12\x0b\n\x07TURN_ON\x10\x00\x12\x0c\n\x08TURN_OFF\x10\x01\x12\x0e\n\nSTART_SCAN\x10\x02\x12\r\n\tSTOP_SCAN\x10\x03')
 
 _PROXYMSGCMD = _descriptor.EnumDescriptor(
   name='ProxyMsgCmd',
@@ -35,22 +35,26 @@ _PROXYMSGCMD = _descriptor.EnumDescriptor(
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='BLE_DISCONNECT', index=3, number=4,
+      name='DISCONNECT', index=3, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CONNECT_RESULT', index=4, number=5,
+      name='BLE_DISCONNECTED', index=4, number=5,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='PROXY_DATA', index=5, number=6,
+      name='CONNECT_RESULT', index=5, number=6,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PROXY_DATA', index=6, number=7,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=499,
-  serialized_end=611,
+  serialized_start=591,
+  serialized_end=721,
 )
 
 ProxyMsgCmd = enum_type_wrapper.EnumTypeWrapper(_PROXYMSGCMD)
@@ -79,17 +83,18 @@ _CONTROLCMD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=613,
-  serialized_end=683,
+  serialized_start=723,
+  serialized_end=793,
 )
 
 ControlCmd = enum_type_wrapper.EnumTypeWrapper(_CONTROLCMD)
 CONTROL = 1
 SCAN_RESULT = 2
 CONNECT = 3
-BLE_DISCONNECT = 4
-CONNECT_RESULT = 5
-PROXY_DATA = 6
+DISCONNECT = 4
+BLE_DISCONNECTED = 5
+CONNECT_RESULT = 6
+PROXY_DATA = 7
 TURN_ON = 0
 TURN_OFF = 1
 START_SCAN = 2
@@ -195,15 +200,43 @@ _CONNECT = _descriptor.Descriptor(
 )
 
 
-_BLEDISCONNECT = _descriptor.Descriptor(
-  name='BleDisconnect',
-  full_name='BleDisconnect',
+_DISCONNECT = _descriptor.Descriptor(
+  name='Disconnect',
+  full_name='Disconnect',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='address', full_name='BleDisconnect.address', index=0,
+      name='address', full_name='Disconnect.address', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=True, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=145,
+  serialized_end=176,
+)
+
+
+_BLEDISCONNECTED = _descriptor.Descriptor(
+  name='BleDisconnected',
+  full_name='BleDisconnected',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='address', full_name='BleDisconnected.address', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -218,8 +251,8 @@ _BLEDISCONNECT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=145,
-  serialized_end=177,
+  serialized_start=178,
+  serialized_end=212,
 )
 
 
@@ -238,9 +271,16 @@ _CONNECTRESULT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='errorString', full_name='ConnectResult.errorString', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='address', full_name='ConnectResult.address', index=1,
+      number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='errorString', full_name='ConnectResult.errorString', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=True, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -253,8 +293,8 @@ _CONNECTRESULT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=179,
-  serialized_end=231,
+  serialized_start=214,
+  serialized_end=285,
 )
 
 
@@ -281,8 +321,8 @@ _PROXYDATA = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=233,
-  serialized_end=258,
+  serialized_start=287,
+  serialized_end=312,
 )
 
 
@@ -322,22 +362,29 @@ _BLEPROXYMSG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='bleDisconnect', full_name='BleProxyMsg.bleDisconnect', index=4,
+      name='disconnect', full_name='BleProxyMsg.disconnect', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='connectResult', full_name='BleProxyMsg.connectResult', index=5,
+      name='bleDisconnected', full_name='BleProxyMsg.bleDisconnected', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='proxyData', full_name='BleProxyMsg.proxyData', index=6,
+      name='connectResult', full_name='BleProxyMsg.connectResult', index=6,
       number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='proxyData', full_name='BleProxyMsg.proxyData', index=7,
+      number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -351,8 +398,8 @@ _BLEPROXYMSG = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=261,
-  serialized_end=497,
+  serialized_start=315,
+  serialized_end=588,
 )
 
 _CONTROL.fields_by_name['cmd'].enum_type = _CONTROLCMD
@@ -360,13 +407,15 @@ _BLEPROXYMSG.fields_by_name['cmd'].enum_type = _PROXYMSGCMD
 _BLEPROXYMSG.fields_by_name['control'].message_type = _CONTROL
 _BLEPROXYMSG.fields_by_name['scanResult'].message_type = _SCANRESULT
 _BLEPROXYMSG.fields_by_name['connect'].message_type = _CONNECT
-_BLEPROXYMSG.fields_by_name['bleDisconnect'].message_type = _BLEDISCONNECT
+_BLEPROXYMSG.fields_by_name['disconnect'].message_type = _DISCONNECT
+_BLEPROXYMSG.fields_by_name['bleDisconnected'].message_type = _BLEDISCONNECTED
 _BLEPROXYMSG.fields_by_name['connectResult'].message_type = _CONNECTRESULT
 _BLEPROXYMSG.fields_by_name['proxyData'].message_type = _PROXYDATA
 DESCRIPTOR.message_types_by_name['Control'] = _CONTROL
 DESCRIPTOR.message_types_by_name['ScanResult'] = _SCANRESULT
 DESCRIPTOR.message_types_by_name['Connect'] = _CONNECT
-DESCRIPTOR.message_types_by_name['BleDisconnect'] = _BLEDISCONNECT
+DESCRIPTOR.message_types_by_name['Disconnect'] = _DISCONNECT
+DESCRIPTOR.message_types_by_name['BleDisconnected'] = _BLEDISCONNECTED
 DESCRIPTOR.message_types_by_name['ConnectResult'] = _CONNECTRESULT
 DESCRIPTOR.message_types_by_name['ProxyData'] = _PROXYDATA
 DESCRIPTOR.message_types_by_name['BleProxyMsg'] = _BLEPROXYMSG
@@ -389,11 +438,17 @@ class Connect(_message.Message):
 
   # @@protoc_insertion_point(class_scope:Connect)
 
-class BleDisconnect(_message.Message):
+class Disconnect(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _BLEDISCONNECT
+  DESCRIPTOR = _DISCONNECT
 
-  # @@protoc_insertion_point(class_scope:BleDisconnect)
+  # @@protoc_insertion_point(class_scope:Disconnect)
+
+class BleDisconnected(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _BLEDISCONNECTED
+
+  # @@protoc_insertion_point(class_scope:BleDisconnected)
 
 class ConnectResult(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

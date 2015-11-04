@@ -4,7 +4,7 @@ from PyQt4 import QtGui, QtCore
 
 class ProgressDialog(QtGui.QProgressDialog):
     
-    def __init__(self, parent, waitTime=3000, title="Please wait", max=100):
+    def __init__(self, parent, waitTime=4000, title="Please wait", max=100):
         QtGui.QProgressDialog.__init__(self, title, "Cancel", 0, max, parent)
         self.setWindowTitle(text.CONNECTING_BLE_DEVICE)
         self.timer = QtCore.QTimer()
@@ -20,6 +20,7 @@ class ProgressDialog(QtGui.QProgressDialog):
     
     def cancel(self):
         self.timer.stop()
+        self.close()
         
     def onTimeout(self):
         self.setValue(self.step)

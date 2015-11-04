@@ -24,5 +24,19 @@ class ProtocolPacker:
         
     def getStopScanBuff(self):
         return self.getControlBuff(controlCmd=bleProxyPb.STOP_SCAN)
+    
+    def getConnectBuff(self, address):
+        self.msg.Clear()
+        self.msg.cmd = bleProxyPb.CONNECT
+        self.msg.connect.address = address
+        pbBuff = self.msg.SerializeToString()
+        return self.__pack(pbBuff)
+    
+    def getDisconnectBuff(self, address=""):
+        self.msg.Clear()
+        self.msg.cmd = bleProxyPb.DISCONNECT
+        self.msg.disconnect.address = address
+        pbBuff = self.msg.SerializeToString()
+        return self.__pack(pbBuff)
         
 protocolPacker = ProtocolPacker()

@@ -21,6 +21,7 @@ class MainWindow(QtGui.QMainWindow):
         self.tipPupup = TipPupup()
         self.presenter = MainWindowPresenter(self)
         self.bleproxyAddressDialog = BleproxyAddressDialog(self)
+        self.progressDialog = ProgressDialog(self)
         self.setupSignals()
     
     def setupSignals(self):
@@ -31,6 +32,8 @@ class MainWindow(QtGui.QMainWindow):
         
         self.connect(sigObject, signals.SIG_MSG_RECVED, self.presenter.handleDataBuff)
         self.connect(sigObject, signals.SIG_BLE_DEVICE, self.onBleDevice)
+        self.connect(sigObject, signals.SIG_CONNECT_RESULT, self.onConnectResult)
+        self.connect(sigObject, signals.SIG_DISCONNECT_BLE, self.onDisconnectBle)
     
     def setupUi_disconnected(self):
         self.ui.scanBtn.setEnabled(False)
@@ -39,6 +42,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.bleListWgt.clear_()
         
     def setupUi_connected(self):
+        self.ui.bleListWgt.setEnabled(True)
         self.ui.scanBtn.setEnabled(True)
         self.ui.connectBtn.setText(text.DISCONNECT)
         
@@ -46,13 +50,29 @@ class MainWindow(QtGui.QMainWindow):
         if self.presenter.isConnected():
             self.presenter.stopTcpClient()
             self.setupUi_disconnected()
+            self.ui.sockTab.removeSockForm()
+            self.ui.bleListWgt.setCurAddress(None)
         else:
             self.bleproxyAddressDialog.show_()
     
+    def onDisconnectBle(self):
+        self.ui.sockTab.removeSockForm()
+        self.ui.bleListWgt.setEnabled(True)
+        self.ui.bleListWgt.setCurAddress(None)
+        self.ui.scanBtn.setEnabled(True)
+        self.presenter.setScanning(False)
+        
     def onBleItemDoubleClicked(self, item):
+        if item.isConnected():
+            logger.debug("already connected")
+            return
+            
         logger.debug("connect to ble device: %s" % item.getAddress())
-        dialog = ProgressDialog(self)
-        dialog.show()
+        ret = self.presenter.connectBleDevice(item.getAddress())
+        if ret:
+            self.progressDialog.show()
+        else:
+            self.tipPupup.makeErrorText(text.SEND_PKG_ERROR)
         
     def onScanBtnClicked(self):
         ret, scanning = self.presenter.scan()
@@ -70,6 +90,23 @@ class MainWindow(QtGui.QMainWindow):
             logger.error("connect error")
             self.tipPupup.makeErrorText(error.TCP_CLIENT_CONNECT_ERROR)
     
+    def onConnectResult(self, result, address, errorString):
+        if self.progressDialog.isActiveWindow():
+            self.progressDialog.cancel()
+            
+        if not result:
+            logger.debug("Connect ble device error: %s" % errorString)
+            self.tipPupup.makeErrorText(text.CONNECT_BLE_ERROR)
+            return
+            
+        logger.debug("Connect ble device %s OK" % address)
+        #self.tipPupup.makeInfoText(text.CONNECT_BLE_OK)
+        self.ui.scanBtn.setEnabled(False)
+        self.ui.scanBtn.setText(text.TEXT_ON_NOT_SCANNING)
+        self.ui.bleListWgt.setEnabled(False)
+        self.ui.bleListWgt.setCurAddress(address)
+        self.ui.sockTab.addSockForm(self.presenter.getTcpClient())
+        
     def onBleDevice(self, name, address, rssi):
         #logger.debug("%s[%s]\t\t%d" % (name, address, rssi))
         self.ui.bleListWgt.addBleDevice(name, address, rssi)

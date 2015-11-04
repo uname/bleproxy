@@ -21,11 +21,12 @@ public class ProtocolPacker {
         return mInstance;
     }
 
-    public byte[] getConnectResultMsgBuff(boolean result, String errorString) {
+    public byte[] getConnectResultMsgBuff(boolean result, String address, String errorString) {
         mMsgBuilder.clear();
         return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.CONNECT_RESULT)
                 .setConnectResult(BleProxy.ConnectResult.newBuilder().setResult(result)
-                    .setErrorString(errorString)).build().toByteArray();
+                        .setAddress(address)
+                        .setErrorString(errorString)).build().toByteArray();
     }
 
     public byte[] getScanResultMsgBuff(String deviceName, String address, int rssi) {
@@ -42,7 +43,7 @@ public class ProtocolPacker {
 
     public byte[] getBleDisconnectMsgBuff(String address) {
         mMsgBuilder.clear();
-        return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.BLE_DISCONNECT)
-                .setBleDisconnect(BleProxy.BleDisconnect.newBuilder().setAddress(address)).build().toByteArray();
+        return mMsgBuilder.setCmd(BleProxy.ProxyMsgCmd.BLE_DISCONNECTED)
+                .setBleDisconnected(BleProxy.BleDisconnected.newBuilder().setAddress(address)).build().toByteArray();
     }
 }
