@@ -19,7 +19,9 @@ import com.hqw.bleproxy.ble.BLEService;
 public class BLEHelper {
 
 	protected static final String TAG = BLEHelper.class.getSimpleName();
+	private static final int CONNECT_TIMEOUT = 5000;
 	private static BLEHelper mInstance;
+	private boolean mTimeoutFlag = false;
 	private BluetoothManager _bluetoothManager;
 	private BluetoothAdapter _bluetoothAdapter;
 	private BLEBroadcastReceiver mGattReceiver;
@@ -37,6 +39,15 @@ public class BLEHelper {
 		void onDataReceived(byte[] data);
 	}
 
+	private Runnable mConnectTimeoutRunnable = new Runnable() {
+		@Override
+		public void run() {
+			mTimeoutFlag = true;
+			LogUtil.d(TAG, "connect timeout:(");
+			mListener.onConnectResult(false, "");
+		}
+	};
+
 	private Handler mHandler = new Handler(new Handler.Callback() {
 		@Override
 		public boolean handleMessage(Message msg) {
@@ -48,7 +59,12 @@ public class BLEHelper {
 			switch (msg.what) {
 				case BLEBroadcastReceiver.MSG_GATT_SERVICES_DISCOVERED:
 					String address = (String) msg.obj;
-					mListener.onConnectResult(BLEHelper.getInstance().realBtConnect(address), address);
+					boolean result = false;
+					if(!mTimeoutFlag) {
+						mHandler.removeCallbacks(mConnectTimeoutRunnable);
+						result = BLEHelper.getInstance().realBtConnect(address);
+					}
+					mListener.onConnectResult(result, address);
 					break;
 
 				case BLEBroadcastReceiver.MSG_GATT_DISCONNECTED:
@@ -185,6 +201,9 @@ public class BLEHelper {
 			context = BleProxyApp.getContext();
 		}
 		btStopScan();
+		mTimeoutFlag = false;
+		mHandler.postDelayed(mConnectTimeoutRunnable, CONNECT_TIMEOUT);
+
 		return btConnectToDevice(context, address);
 	}
 	
