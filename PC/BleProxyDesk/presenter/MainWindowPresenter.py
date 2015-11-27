@@ -50,3 +50,4 @@ class MainWindowPresenter:
         
     def handleDataBuff(self, data):
         protocolHandler.handleDataBuff(data)
+        

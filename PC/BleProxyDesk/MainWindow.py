@@ -7,6 +7,7 @@ from SigObject import sigObject
 from form.TipPupup import TipPupup
 from ui.AppIcons import *
 from ui.Ui_MainWindow import Ui_MainWindow
+from MenuManager import MenuManager
 from presenter.MainWindowPresenter import MainWindowPresenter
 from form.BleproxyAddressDialog import BleproxyAddressDialog
 from form.ProgressDialog import ProgressDialog
@@ -26,12 +27,15 @@ class MainWindow(QtGui.QMainWindow):
         self.presenter = MainWindowPresenter(self)
         self.bleproxyAddressDialog = BleproxyAddressDialog(self)
         self.progressDialog = ProgressDialog(self)
+        self.menuManager = MenuManager(self)
         self.setupSignals()
     
     def setupSignals(self):
         self.ui.connectBtn.clicked.connect(self.onConnectBtnClicked)
         self.ui.scanBtn.clicked.connect(self.onScanBtnClicked)
         self.ui.bleListWgt.itemDoubleClicked.connect(self.onBleItemDoubleClicked)
+        self.ui.bleListWgt.setContextMenuPolicy(QtCore.Qt.CustomContextMenu) 
+        self.connect(self.ui.bleListWgt, QtCore.SIGNAL("customContextMenuRequested(const QPoint&)"), self.onBleListWgtPopMenu)
         self.connect(self.bleproxyAddressDialog, signals.SIG_CONNECT_SERVER, self.onConnectServer)
         
         self.connect(sigObject, signals.SIG_MSG_RECVED, self.presenter.handleDataBuff)
@@ -40,7 +44,7 @@ class MainWindow(QtGui.QMainWindow):
         self.connect(sigObject, signals.SIG_DISCONNECT_BLE, self.onDisconnectBle)
         self.connect(sigObject, signals.SIG_SERVER_CLOSED, self.onServerClosed)
         self.connect(sigObject, signals.SIG_BLE_DISCONNECTED, self.onBleDisconnected)
-    
+        
     def setupUi_disconnected(self):
         self.ui.scanBtn.setEnabled(False)
         self.ui.scanBtn.setText(text.TEXT_ON_NOT_SCANNING)
@@ -127,6 +131,18 @@ class MainWindow(QtGui.QMainWindow):
     def onBleDevice(self, name, address, rssi):
         #logger.debug("%s[%s]\t\t%d" % (name, address, rssi))
         self.ui.bleListWgt.addBleDevice(name, address, rssi)
+    
+    def onBleListWgtPopMenu(self, point):
+        if self.ui.bleListWgt.currentItem():
+            self.ui.bleListWgt.popMenu.exec_(self.ui.bleListWgt.mapToGlobal(point))
+    
+    def onCpMacAddress(self):
+        curItem = self.ui.bleListWgt.currentItem()
+        if not curItem:
+            return
+        
+        QtGui.QApplication.clipboard().setText(curItem.getAddress())
+        self.tipPupup.makeInfoText(text.CP_MAC_OK)
         
     def closeEvent(self, e):
         self.presenter.stopTcpClient()
