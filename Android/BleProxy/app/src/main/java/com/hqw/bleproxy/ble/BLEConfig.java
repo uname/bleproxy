@@ -9,7 +9,7 @@ public class BLEConfig {
     public final static String SEND_UUID = "0000ff01-0000-1000-8000-00805f9b34fb";
     public final static String RECEIVE_UUID = "0000ff02-0000-1000-8000-00805f9b34fb";
 
-    public final static int MAX_SEND_INTERVAL = 30; //ms
+    public final static int MAX_SEND_INTERVAL = 2; //ms
     public final static int MAX_SEND_BUFF_SIZE = 20; //byte
 
 }
