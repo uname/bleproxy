@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 
 import com.hqw.bleproxy.LogUtil;
+import com.hqw.bleproxy.StringUtil;
 
 import java.util.UUID;
 
@@ -62,10 +63,37 @@ public class BLEClient {
         return true;
     }
 
+    private synchronized int realSend(final byte[] buff) {
+        long t = System.currentTimeMillis();
+        long dt = t - mLastSentTime;
+        if(dt < MAX_SEND_INTERVAL) {
+            LogUtil.d(TAG, "#################### send interval too small, need to sleep for a while");
+            LogUtil.d(TAG,  "_lastSentTime=" + mLastSentTime + ", currentTime=" + t + ", dt=" + dt);
+            try {
+                // 暂时直接在这里sleep吧，时间比较短
+                Thread.sleep(MAX_SEND_INTERVAL - dt);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        boolean ret = mSendCharacteristic.setValue(buff);
+        LogUtil.d(TAG, "SEND size = " + buff.length + ", BUFF: " + StringUtil.bytesToHexString(buff));
+        LogUtil.d(TAG, "setValue result is " + ret);
+        mBLEService.writeCharacteristic(mSendCharacteristic);
+
+        mLastSentTime = System.currentTimeMillis();
+
+        return buff.length;
+    }
+
+
     public synchronized  int send(final byte[] buff) {
         if(buff == null) {
             return 0;
         }
+        int sentSize = 0;
         if(buff.length > MAX_SEND_BUFF_SIZE) {
             LogUtil.w(TAG, "buff size too big, need split");
             int maxSecNum = buff.length / MAX_SEND_BUFF_SIZE;
@@ -73,35 +101,20 @@ public class BLEClient {
             byte[] tmpBuf = new byte[MAX_SEND_BUFF_SIZE];
             for(int i = 0; i < maxSecNum; i++) {
                 System.arraycopy(buff, i * MAX_SEND_BUFF_SIZE, tmpBuf, 0, MAX_SEND_BUFF_SIZE);
-                send(tmpBuf);
+                sentSize += realSend(tmpBuf);
             }
             if(leftSize > 0) {
                 tmpBuf = new byte[leftSize];
                 System.arraycopy(buff, maxSecNum * MAX_SEND_BUFF_SIZE , tmpBuf, 0, leftSize);
-                send(tmpBuf);
+                sentSize += realSend(tmpBuf);
             }
             return buff.length;
+        } else {
+            sentSize += realSend(buff);
         }
 
-        long t = System.currentTimeMillis();
-        long dt = t - mLastSentTime;
-        if(dt < MAX_SEND_INTERVAL) {
-            LogUtil.d(TAG, "#################### send interval too small, need to sleep for a while");
-            try {
-                // 暂时直接在这里sleep吧，时间比较短，应该不会对主线程造成神马影响
-                Thread.sleep(MAX_SEND_INTERVAL - dt);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        mLastSentTime = t;
-        boolean ret =  mSendCharacteristic.setValue(buff);
-        LogUtil.d(TAG, "setValue result is " + ret);
-        mBLEService.writeCharacteristic(mSendCharacteristic);
-
-        return buff.length;
+        return sentSize;
     }
-
     
     public void close() {
     	mBLEService.disconnect();
